@@ -1,0 +1,146 @@
+
+-- The API will only return data from the point in time the feed was created, up to a maximum of 7 days.  Example: If you create a brand new feed for a device today, you will not be able to pull data  from previous days on this new feed. --
+
+The SPOT shared page is built upon an XML data stream that is enabled when a new shared page is created.
+
+The first step is to create a Share Page in your account.  Once you have the Shared Page created, you can then obtain your FEED_ID from the URL of the Shared Page.
+
+The glId in the following url is the FEED_ID you will need below. (Please note the glId/FEED_ID in the examples below is non-functional, it is for example purposes only)
+http://share.findmespot.com/shared/faces/viewspots.jsp?glId=0XapxKiqW4RCHYhVkaCBpaHT3cNMUcEef
+
+The FEED_ID in the above Shared Page URL is: 0XapxKiqW4RCHYhVkaCBpaHT3cNMUcEef
+
+
+Available API usage calls:
+Adding .xml before any further query string parameters will return XML and .json will return JSON.
+https://api.findmespot.com/spot-main-web/consumer/rest-api/2.0/public/feed/FEED_ID_HERE/message.xml
+
+Last 50 Messages in XML format:
+https://api.findmespot.com/spot-main-web/consumer/rest-api/2.0/public/feed/FEED_ID_HERE/message.xml
+
+Paging in increments of 50 in XML format (Note: No ?start= results in newest 50 by default):
+https://api.findmespot.com/spot-main-web/consumer/rest-api/2.0/public/feed/FEED_ID_HERE/message.xml?start=51
+https://api.findmespot.com/spot-main-web/consumer/rest-api/2.0/public/feed/FEED_ID_HERE/message.xml?start=101
+
+Last 50 Messages in JSON format (both are the same request):
+https://api.findmespot.com/spot-main-web/consumer/rest-api/2.0/public/feed/FEED_ID_HERE/message.json
+
+Last 50 Messages with password (you should be able to add ?feedPassword to any of the feed requests):
+https://api.findmespot.com/spot-main-web/consumer/rest-api/2.0/public/feed/FEED_ID_HERE/message.xml?feedPassword=123456
+
+Start/End Date - 7 days worth of data max restriction applies, regardless of what date you put in there:
+https://api.findmespot.com/spot-main-web/consumer/rest-api/2.0/public/feed/FEED_ID_HERE/message.xml?startDate=2012-07-03T00:00:00-0000&endDate=2012-08-02T00:00:00-0000
+(Offset functionality is currently not implemented, using -0000 is the only available offset)
+
+*** The /latest functionality may not always return the latest message. This is being looked into ***
+Latest - This one will show you the latest message for each device on the shared page, and only the latest message:
+https://api.findmespot.com/spot-main-web/consumer/rest-api/2.0/public/feed/FEED_ID_HERE/latest.xml
+
+
+The following message types are available via the current feed:
+
+    OK
+    TRACK
+    EXTREME-TRACK
+    UNLIMITED-TRACK
+    NEWMOVEMENT
+    HELP
+    HELP-CANCEL
+    CUSTOM
+    POI
+    STOP
+
+The XML returned via an api.findmespot.com feed will look like this:
+
+<?xml version="1.0" encoding="UTF-8"?>
+<response>
+	<feedMessageResponse>
+		<count>10</count>
+		<feed>
+			<id>03XHH0sPyTiYUsYD2TVJ4q7CzEH89HBhG</id>
+			<name>OneAtATime</name>
+			<description>OneAtATime</description>
+			<status>ACTIVE</status>
+			<usage>0</usage>
+			<daysRange>7</daysRange>
+			<detailedMessageShown>true</detailedMessageShown>
+		</feed>
+		<totalCount>10</totalCount>
+		<activityCount>0</activityCount>
+		<messages>
+			<message clientUnixTime="0">
+				<id>4937065</id>
+				<messengerId>0-8356068</messengerId>
+				<messengerName>Spot2</messengerName>
+				<unixTime>1364909292</unixTime>
+				<messageType>HELP-CANCEL</messageType>
+				<latitude>-99999.0</latitude>
+				<longitude>-99999.0</longitude>
+				<modelId>SPOT2</modelId>
+				<showCustomMsg>Y</showCustomMsg>
+				<dateTime>2013-04-02T06:28:12-0700</dateTime>
+				<hidden>0</hidden>
+				<messageContent>The help message has been cancelled</messageContent>
+			</message>
+			<message clientUnixTime="0">
+				<id>4937064</id>
+				<messengerId>0-8356068</messengerId>
+				<messengerName>Spot2</messengerName>
+				<unixTime>1364909283</unixTime>
+				<messageType>HELP</messageType>
+				<latitude>45.42249</latitude>
+				<longitude>-111.68832</longitude>
+				<modelId>SPOT2</modelId>
+				<showCustomMsg>Y</showCustomMsg>
+				<dateTime>2013-04-02T06:28:03-0700</dateTime>
+				<hidden>0</hidden>
+				<messageContent>This is the default HELP message. Please update.</messageContent>
+			</message>
+			<message clientUnixTime="0">
+				<id>4937060</id>
+				<messengerId>0-8356068</messengerId>
+				<messengerName>Spot2</messengerName>
+				<unixTime>1364908774</unixTime>
+				<messageType>CUSTOM</messageType>
+				<latitude>45.42249</latitude>
+				<longitude>-111.68832</longitude>
+				<modelId>SPOT2</modelId>
+				<showCustomMsg>Y</showCustomMsg>
+				<dateTime>2013-04-02T06:19:34-0700</dateTime>
+				<hidden>0</hidden>
+				<messageContent>This is a custom message</messageContent>
+			</message>
+			<message clientUnixTime="0">
+				<id>4937059</id>
+				<messengerId>0-8356068</messengerId>
+				<messengerName>Spot2</messengerName>
+				<unixTime>1364908765</unixTime>
+				<messageType>OK</messageType>
+				<latitude>45.42249</latitude>
+				<longitude>-111.68832</longitude>
+				<modelId>SPOT2</modelId>
+				<showCustomMsg>Y</showCustomMsg>
+				<dateTime>2013-04-02T06:19:25-0700</dateTime>
+				<hidden>0</hidden>
+				<messageContent>This is the default SPOT Check-in/OK message. Please update.</messageContent>
+			</message>
+			<message clientUnixTime="0">
+				<id>4937057</id>
+				<messengerId>0-8356068</messengerId>
+				<messengerName>Spot2</messengerName>
+				<unixTime>1364908512</unixTime>
+				<messageType>TRACK</messageType>
+				<latitude>45.42249</latitude>
+				<longitude>-111.68832</longitude>
+				<modelId>SPOT2</modelId>
+				<showCustomMsg>Y</showCustomMsg>
+				<dateTime>2013-04-02T06:15:12-0700</dateTime>
+				<hidden>0</hidden>
+			</message>
+		</messages>
+	</feedMessageResponse>
+</response>
+
+
+The XML document will contain 0 or more messages. Only the messengers and message types enabled by the customer will be available in this data stream. In addition, viewing limits are imposed on all shared page links and abuse of this feature may cause the viewing limits to come into effect.
+

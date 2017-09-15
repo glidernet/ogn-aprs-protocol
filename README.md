@@ -1,1 +1,0 @@
-# ogn-aprs-protocol

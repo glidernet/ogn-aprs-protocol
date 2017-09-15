@@ -1,0 +1,375 @@
+# Skylines API
+
+## Overview
+
+### Schema
+
+- API is only available over HTTPS at `https://api.skylines.aero/`
+- HTTP will show `404 Not Found`
+- All data is sent and received as [JSON](http://json.org/)
+- Blank fields are included as `null`
+- All timestamps are returned in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`
+
+
+### Authentication
+
+- Authentication failure results in `401 Unauthorized`
+- Several failed authentication attemps result in temporary block for the user and `403 Forbidden`
+- Missing resource access results in `404 Not Found` or `403 Forbidden`, depending on the resource
+- Three ways to authenticate:
+
+    - [Basic Authentication](http://en.wikipedia.org/wiki/Basic_access_authentication)
+    - `Authorization: bearer TOKEN` header
+    - `access_token` query parameter
+
+
+### Pagination
+
+- 30 items by default
+- `?page` parameter to select page
+- `?page=1` is the first page
+- no `?page` parameter means first page
+- `?per_page` parameter to increase items per page limit (up to 100)
+
+#### Link Header
+
+- Pagination info is included in the `Link` header
+- `next`, `last`, `first`, `prev` are supported `rel` values
+
+```
+Link: <https://api.skylines.aero/v1/flights?page=3&per_page=100>; rel="next",
+      <https://api.skylines.aero/v1/flights?page=50&per_page=100>; rel="last"
+```
+*Linebreak is included for readability.*
+
+
+### Rate Limiting
+
+- Authenticated requests: 5.000 requests per hour and user
+- Unauthenticated requests: 60 requests per hour and IP
+- `X-Rate-Limit-Limit` header shows maximum number of requests that the consumer is permitted to make per hour
+- `X-Rate-Limit-Remaining` header shows number of requests remaining in the current rate limit window
+- `X-Rate-Limit-Reset`header shows remaining time in seconds until the current rate limit window resets
+- Reached limit will result in `403 Forbidden`
+
+
+### User Agent Required
+
+- `User-Agent` header is required and must not be empty
+- Request without `User-Agent` header is rejected with `403 Forbidden`
+
+
+### Conditional requests
+
+- Resources return `ETag` and `Last-Modified` headers
+- Resource requests return `304 Not Modified` if requested with matching `If-None-Match` or `If-Modified-Since` headers
+- `304 Not Modified` responses do not count against the Rate Limit
+
+
+### Cross Origin Resource Sharing
+
+- Supported from any `Origin`
+- Requests with token may be limited to the `Origin` that created the token
+
+
+### JSONP
+
+- Supported through `callback` parameter
+- Data is enveloped in `data` property, headers and HTTP status code in `meta`
+
+
+### JSON Envelope
+
+- JSONP envelope sent as JSON with `?envelope=true`
+- Always returns `200 Ok`
+
+
+## Airfields
+
+### List airfields
+
+    GET /airfields
+    
+### Get airfield
+
+    GET /airfields/:airfield_id
+
+
+## Airspace
+
+### List airspaces
+
+    GET /airspaces
+    
+### Get airspace
+
+    GET /airspaces/:airspace_id
+
+
+## Events
+
+*(Experimental)*
+
+### List events
+
+    GET /events
+
+### List events performed by a single user
+
+    GET /users/:user_id/events
+
+### List events for the authenticated user
+
+    GET /user/events
+
+
+## Flights
+
+### List flights
+
+    GET /flights
+
+### Get flight
+
+    GET /flights/:flight_id
+
+### Edit flight
+
+    PATCH /flights/:flight_id
+
+### Delete flight
+
+    DELETE /flights/:flight_id
+
+### List flight comments
+
+    GET /flights/:flight_id/comments
+
+### Add flight comment
+
+    POST /flights/:flight_id/comments
+
+### List flight phases
+
+    GET /flights/:flight_id/phases
+
+### List flight encounters
+
+    GET /flights/:flight_id/encounters
+
+
+## Groups/Clubs
+
+### List groups/clubs
+
+    GET /groups
+
+### List groups/clubs of a user
+
+    GET /users/:user_id/groups
+
+### List groups/clubs of the authenticated user
+
+    GET /user/groups
+
+### Get group/club
+
+    GET /groups/:group_id
+    
+### Create group/club
+
+    POST /groups
+
+### Edit group/club
+
+    PATCH /groups/:group_id
+    
+### Delete group/club
+
+    DELETE /groups/:group_id
+    
+### List group/club members
+
+    GET /groups/:group_id/members
+    
+### Add group/club member
+
+    PUT /groups/:group_id/members/:user_id
+    
+### Remove group/club member
+
+    DELETE /groups/:group_id/members/:user_id
+    
+
+## IGC Files
+
+### List IGC files
+
+    GET /igcs
+    
+### Get IGC file
+
+    GET /igcs/:igc_id
+
+### Update IGC file
+
+    PATCH /igcs/:igc_id
+
+### Download IGC file
+
+    GET /igcs/:igc_id/content{?access_token=DOWNLOAD-TOKEN}
+
+### Upload IGC file(s)
+
+    POST /igcs
+
+Also accepts archives with 1..n IGC files inside.
+
+
+## Live Tracking
+
+*(Experimental)*
+
+### List live tracking sessions
+
+    GET /live
+
+### Get live tracking session
+
+    GET /live/:live_id
+
+
+## LiveTrack24
+
+*(Experimental)*
+
+    GET /track.php
+    GET /client.php
+
+
+## Notifications
+
+*(Experimental)*
+
+### List notifications for the authenticated user
+
+    GET /notifications
+
+### Mark notifications as read
+
+    PUT /notifications
+
+### Mark single notification as read
+
+    PATCH /notifications/:notification_id
+
+
+## Ranking
+
+*(Experimental)*
+
+### Get user ranking
+
+    GET /ranking/users
+
+### Get club ranking
+
+    GET /ranking/clubs
+
+### Get airfield ranking
+
+    GET /ranking/airfields
+
+
+## Search
+
+    GET /search?q=abc123
+
+
+## Sessions
+
+### List (active) sessions
+
+    GET /sessions
+    
+### Create session
+
+    POST /sessions
+    
+### Get current session
+
+    GET /session
+
+### Delete current session
+
+    DELETE /session
+
+### Delete different session
+
+    DELETE /sessions/:session_id
+
+
+## Statistics
+
+*(Experimental)*
+
+### Get global statistics
+
+    GET /statistics
+
+### Get user statistics
+
+    GET /users/:user_id/statistics
+
+### Get group/club statistics
+
+    GET /groups/:group_id/statistics
+
+
+## Users
+
+### List users
+
+    GET /users
+
+### Create user
+
+    POST /users
+    
+### Get user
+
+    GET /users/:user_id
+
+### Get the followers of a user
+
+    GET /users/:user_id/followers
+
+### Get the users another user is following
+
+    GET /users/:user_id/following
+
+### Get the authenticated user
+
+    GET /user
+    
+### Update the authenticated user
+
+    PATCH /user
+    
+### Get the followers of the authenticated user
+
+    GET /user/followers
+
+### Get the users the authenticated user is following
+
+    GET /user/following
+
+### Follow a user
+
+    PUT /user/following/:user_id
+    
+### Unfollow a user
+
+    DELETE /user/following/:user_id
+
+
