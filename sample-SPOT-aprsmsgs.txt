@@ -1,0 +1,5 @@
+APRSMSG :  ICA3E7540>OGSPOT,qAS,SPOT:/161427h1448.35S/04610.86W'000/000/A=008677 id0-2860357 SPOT3 GOOD 
+
+id0-28... is a unique ID within the SPOT system.
+SPOT2 is the Spot model
+GOOD is the battery status or some other help messages.
