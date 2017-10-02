@@ -1,0 +1,15 @@
+
+On version 0.2.6 of the OGN software it does explicitly support the information of the RELAY packages identifying those.
+For example an OGN tracker can do a RELAY of another OGN tracker.
+The OGN software tries to identify who is doing the RELAY, sometimes it does and it says on the APRS message who is doing the RELAY, sometimes it does not, in that case it forms an APRS message, just saying the is a RELAY
+Examples of RELAY APRS messages:
+
+OGN1C590E>APRS,OGN265E34*,qAS,SCLC:/230555h3322.39S/07034.66W'000/000/A=002270 !W19! id071C590E +040fpm +0.0rot 5.2dB 3e +2.6kHz gps4x6
+OGN1C590E>APRS,OGN265E34*,qAS,SCLC:/230559h3322.39S/07034.66W'000/000/A=002273 !W18! id071C590E +059fpm +0.0rot 0.5dB 0e +2.5kHz gps4x6
+OGN1C590E>APRS,RELAY*,qAS,SCLC:/230603h3322.39S/07034.66W'000/000/A=002276 !W08! id071C590E +040fpm +0.0rot 5.0dB 5e +2.9kHz gps4x6
+OGN1C590E>APRS,RELAY*,qAS,SCLC:/230609h3322.39S/07034.66W'000/000/A=002286 !W08! id071C590E +059fpm +0.0rot 5.8dB 0e +2.6kHz gps4x6
+
+The main feature to parser is ,qAS in the PATH keyword that indicates that is a RELAY message.
+In the case of unknown RELAY is: RELAY,qAS,
+In case of known RELAY is: OGN265E34*,qAS,
+
