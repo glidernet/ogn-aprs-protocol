@@ -1,0 +1,13 @@
+OGN3FC859>OGNTRK,qAS,LZHL:>093215h h00 v00 9sat/1 164m 1002.6hPa +20.2degC 0% 3.34V 14/-110.5dBm 1/min
+
+Explantion of the fields:
+h00 = hardware version (not being filled yet)
+v00 = software version (not being filled yet)
+9sat/1 = GPS status: 9 satellites, FixQuality=1 (GPS)
+164m = altitude by GPS
+1002.6hPa = pressure
++20.2degC = temperature by baro, if not present then by CPU (but not very accurate then)
+0% = humidity, no sensor yet...
+3.34V = battery voltage, here battery divider not installed thus simply the 3.3V VCC, subject to innacuracies due to Vref of the CPU.
+-110dBm = is reasonable noise level, but often this can be like -90 or higher.
+1/min = number of packets received per minute thus it gives an idea of (radio) traffic intensity
