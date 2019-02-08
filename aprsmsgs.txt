@@ -33,6 +33,7 @@ OGSKYL-x for the Skyline (XCsoar)
 OGCAPT-x for the Capture
 OGNAVI-x for the Naviter devices 
 OGNMAV-x for the MAVlink from drones
+OGFLYM-x for the Flymaster devices
 
 Note that -x means the version number for that source, however if omitted means version 0 or (-0)
 
