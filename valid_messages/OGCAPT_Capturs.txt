@@ -1,3 +1,6 @@
+# The following beacons are example for the Capture APRS format
+# source: https://github.com/glidernet/ogn-aprs-protocol
+#
 FLRDDEEF1>OGCAPT,qAS,CAPTURS:/062744h4845.03N/00230.46E'000/000/
 FLRDDEEF1>OGCAPT,qAS,CAPTURS:/064243h4839.64N/00236.78E'000/085/A=000410
 FLRDDEEF1>OGCAPT,qAS,CAPTURS:/064548h4838.87N/00234.03E'000/042/A=000377
