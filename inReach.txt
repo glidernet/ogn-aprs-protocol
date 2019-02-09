@@ -1,0 +1,64 @@
+
+Yes the inReach query format is below;
+
+ 
+
+When inReach was bought by Garmin, some of their URLs changed, but the latest type are here.
+
+ 
+
+inReach URL examples:
+
+======================
+
+There are several Garmin URL query formats.
+
+A well as position, they can also contain the last text message from the pilot.
+
+With or without embedded username / password (only if one is set):-
+
+ 
+
+https://username:password@share.delorme.com/feed/Share/mapshare_name
+
+https://username:password@share.garmin.com/feed/Share/mapshare_name
+
+https://username:password@eur.inreach.garmin.com/feed/Share/mapshare_name
+
+https://<user>:<pass>@share.delorme.com/feed/Share/<mapshare_name>
+
+https://eur.inreach.garmin.com/feed/Share/DougRedpath
+
+https://share.garmin.com/feed/Share/<b>mapshare_name
+
+https://inreach.garmin.com/feed/Share/IndyIR
+
+ 
+
+Responds with file called "feed.kml"
+
+ 
+
+//  XML file with any message or tracking fix contains the tags <Folder>...</Folder>
+
+//  The folder contains these useful fields:
+
+//  <name>xxx</name>
+
+//  <Data name="Time UTC"><value>10/18/2016 12:54:30 PM</value></Data>
+
+//  <Data name="IMEI"><value>300434060496190</value></Data>
+
+//  <Data name="Velocity"><value>0.0 km/h</value></Data>
+
+//  <Data name="Course"><value>0.00 ° True</value></Data>
+
+//  <Point><extrude>false</extrude><altitudeMode>absolute</altitudeMode><coordinates>-0.092911,51.261381,187.95</coordinates></Point>
+
+//  No battery information
+
+//  If no Message present, folder will include tag: <description/> and <Data name="Text"><value/></Data>
+
+//  <Data name="Text"><value>Safe, ready for retrieve. Seguro, listo para recuperar. Indy +44 7584039200</value></Data>
+
+ 
