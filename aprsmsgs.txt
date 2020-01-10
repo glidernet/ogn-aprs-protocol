@@ -38,6 +38,7 @@ OGNAVI-x for the Naviter devices
 OGNMAV-x for the MAVlink from drones
 OGFLYM-x for the Flymaster devices
 OGINREACH-x for the Garmin InReach devices
+OGNDELAY-x for the IGC sanctiones championships delayed messages
 
 Note that -x means the version number for that source, however if omitted means version 0 or (-0)
 
@@ -57,7 +58,7 @@ OGN395F39>OGNT,qAS,Barton:/233155h5145.94N/00111.50W'000/000/A=000354 !W99! id07
 OGN395F39>OGNT,qAS,Barton:>233207h h00 v00 9sat/2 107m 0.0hPa -0.2degC 0% 3.22V 14/-104.0dBm 0/min
 OGN395F39>OGNT,qAS,Barton:/233203h5145.94N/00111.50W'000/000/A=000348 !W99! id07395F39 -078fpm +0.0rot 46.8dB 0e +2.9kHz gps5x7
 OGN8A0749>OGINREACH,qAS,INREACH:/173800h0425.57N/07603.56W'000/000/A=003165 id300434060496190 inReac True Ian Lewis 
-
+OGN99C124>OGNDELAY,RELAY*,qAS,OxfBarton:/155325h5145.95N/00111.50W'000/000/A=000119 id0699C124 -004fpm  +0.0rot  54.0dB 0e -7.4kHz gps2x3 
 and here is what I dump at the receiver just before sending it to the APRS server.
 
 APRS <- OGN395F39>OGNT,qOR:/080629h5145.94N/00111.51W'000/000/A=000321 !W81! id07395F39 -019fpm +0.0rot 45.8dB 0e +3.2kHz gps4x6
