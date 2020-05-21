@@ -2,10 +2,11 @@
 Propossal for a new set of OGN APRS messages:
 
 With the possibility of provide new source of data information to the OGN users, in addition to the standard APRS messages sent by the OGN stations deployed around the world,
-new sources of information are availaible now like SPOT devices, Spider devices, LT24 devices, Oudies or LX900 devices, Capture devices, Skylines devices like XCsoar, etc, ...
+new sources of information are availaible now like SPOT devices, Spider devices, LT24 devices, Oudies or LX900 devices, Capture devices, Skylines devices like XCsoar, PilotAware devices, etc, ...
 We should open the OGN APRS server to other sources of data.
 
-The presnet proposal is to define a set of new "TOCALLs" keywords that it will identify the sources of the data, therefore the parser routines exploiting the data can be aware of the different formats.
+
+The present proposal is to define a set of new "TOCALLs" keywords that it will identify the sources of the data, therefore the parser routines exploiting the data can be aware of the different formats.
 
 For example:
 
@@ -39,6 +40,8 @@ OGNMAV-x for the MAVlink from drones
 OGFLYM-x for the Flymaster devices
 OGINREACH-x for the Garmin InReach devices
 OGNDELAY-x for the IGC sanctioned championships delayed messages using OGN/IGC approved trackers, it contains the number of seconds delayed
+OGPAW-x for the PilotAware devices
+
 
 Note that -x means the version number for that source, however if omitted means version 0 or (-0)
 
@@ -67,6 +70,7 @@ OGN8E20F0>OGNTRK,LEMD,OGNDELAY*,qAS,DLY2APRS:/114807h4030.23N/00341.97W'070/000/
 OGN8E20F0>OGNTRK,LEMD,OGNDELAY*,qAS,DLY2APRS:/114821h4030.23N/00342.00W'075/001/A=002447 !W80! id068E20F0 +000fpm +42.6rot 56.6dB 0e +3.1kHz gps3x5 31dly 
 OGN8E20F0>OGNTRK,LEMD,OGNDELAY*,qAS,DLY2APRS:/114822h4030.23N/00342.00W'074/002/A=002444 !W80! id068E20F0 +000fpm +28.6rot 56.7dB 0e +3.1kHz gps3x5 31dly 
 OGN8E20F0>OGNTRK,LEMD,OGNDELAY*,qAS,DLY2APRS:/114823h4030.23N/00342.01W'070/001/A=002444 !W86! id068E20F0 +000fpm +58.0rot 56.7dB 0e +3.1kHz gps7x10 31dly 
+ICA404EC3>OGPAW,qAS,UKWOG:/104341h5211.18N\00032.53W^131/081/A=004010 !W85! id21404EC3 9.2dB +2.2kHz #+10.0dBm
 
 and here is what I dump at the receiver just before sending it to the APRS server.
 
