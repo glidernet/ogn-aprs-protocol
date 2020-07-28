@@ -1,0 +1,25 @@
+
+There are four ways how we forward the data to OGN.
+
+1. Standalone Oudie connected with Oudie Live app. Its position is forwarded to OGN without any knowledge about any Flarms in that glider. It is possible to enter a Flarm ID manually in order to avoid duplication with a Flarm in the glider, but one needs to know that particular glider's Flarm ID (cumbersome, most people don't do it).
+
+2. Oudie connected to Flarm with a cable and Oudie Live app. In this case FlarmID is known to the Oudie, it forwards its position witht the connected FlarmID. No duplication exists in this case.
+
+When the connected Flarm sees other Flarms, their positions are forwarded to OGN as well. If such Oudie is out of reach of a ground OGN antenna, then it behaves as a portable airborne OGN receiver and forwards positions where they are otherwise not available (such as between Lienz and Cortina d'Ampezzo).
+
+If such Oudie is connected to a Power Flarm, it will also receive data from ADS-B and forward this data to OGN. I'm pretty sure that this is how ICAO targets end up at OGN. Oudie connected to Power Flarm forwarding everything PowerFlarm is reporting as traffic forward to OGN.
+
+3. Oudie 5 for paragliding has an internal Fanet and Flarm module:
+http://naviter.com/oudie-5-xc-pro/ 
+
+It will forward other FNT targets just like #2, except those are paragliders.
+
+4. SeeYou Navigator app:
+http://naviter.com/seeyou-navigator/
+
+It forwards its position to OGN without any possibility to be connected to a Flarm at the moment (this will change).
+
+In all cases forwarding of data goes through the same Naviter server-side service. The one that we were correcting for -1 errors lately. It's easy for us to extend this server and correct for errors without distributing new versions to customers.
+
+Cheers,
+Andrej Kolar
