@@ -24,26 +24,24 @@ OGN8A0749>OGINRE,qAS,INREACH:/173800h0425.57N/07603.56W'000/000/A=003165 id30043
 
 Where the TOCALLs are defined as the following:
 
-OGNFLR-x for the flarm units 
-OGNDSX-x for the T_advisory
-OGNTRK-x for the OGN tracker
-OGADSB-x for the ADS-B just in case someone decodes the ADS-B and want to inject the data on the OGN APRS
-OGNFNT-x for the FANET
-OGNPAW-x for the PilotAware
-OGSPOT-x for the SPOT 
-OGSPID-x for the Spider
-OGLT24-x for the LiveTrack24 
-OGSKYL-x for the Skyline (XCsoar)
-OGCAPT-x for the Capture
-OGNAVI-x for the Naviter devices 
-OGNMAV-x for the MAVlink from drones
-OGFLYM-x for the Flymaster devices
-OGINREACH-x for the Garmin InReach devices
-OGNDELAY-x for the IGC sanctioned championships delayed messages using OGN/IGC approved trackers, it contains the number of seconds delayed
-OGPAW-x for the PilotAware devices
+OGNFLR for the flarm units 
+OGNDSX for the T_advisory
+OGNTRK for the OGN tracker
+OGADSB for the ADS-B just in case someone decodes the ADS-B and want to inject the data on the OGN APRS
+OGNFNT for the FANET
+OGNPAW for the PilotAware
+OGSPOT for the SPOT 
+OGSPID for the Spider
+OGLT24 for the LiveTrack24 
+OGSKYL for the Skyline (XCsoar)
+OGCAPT for the Capture
+OGNAVI for the Naviter devices 
+OGNMAV for the MAVlink from drones
+OGFLYM for the Flymaster devices
+OGINREACH for the Garmin InReach devices
+OGNDELAY for the IGC sanctioned championships delayed messages using OGN/IGC approved trackers, it contains the number of seconds delayed
+OGPAW for the PilotAware devices
 
-
-Note that -x means the version number for that source, however if omitted means version 0 or (-0)
 
 Test data:
 This is what I see coming out of the APRS server:
@@ -71,6 +69,13 @@ OGN8E20F0>OGNTRK,LEMD,OGNDELAY*,qAS,DLY2APRS:/114821h4030.23N/00342.00W'075/001/
 OGN8E20F0>OGNTRK,LEMD,OGNDELAY*,qAS,DLY2APRS:/114822h4030.23N/00342.00W'074/002/A=002444 !W80! id068E20F0 +000fpm +28.6rot 56.7dB 0e +3.1kHz gps3x5 31dly 
 OGN8E20F0>OGNTRK,LEMD,OGNDELAY*,qAS,DLY2APRS:/114823h4030.23N/00342.01W'070/001/A=002444 !W86! id068E20F0 +000fpm +58.0rot 56.7dB 0e +3.1kHz gps7x10 31dly 
 ICA404EC3>OGPAW,qAS,UKWOG:/104341h5211.18N\00032.53W^131/081/A=004010 !W85! id21404EC3 9.2dB +2.2kHz #+10.0dBm
+
+OGN6A90C5>OGNTRK,qAS,LEMD:>154210h h02 v01 0sat/0/29dB 0m 933.3hPa +31.8degC 19.6% 2.98V 14/-98.0dBm 0/min
+OGN6A90C5>OGNTRK,qAS,LEMD:>154217h h02 v01 0sat/0/27dB 0m 933.3hPa +31.8degC 19.6% 2.98V 14/-98.0dBm 0/min
+OGN6A90C5>OGNTRK,qAS,LEMD:>154223h h02 v01 0sat/0/27dB 0m 933.3hPa +31.8degC 19.6% 2.98V 14/-98.0dBm 0/min
+
+LEMD>OGNSDR,TCPIP*,qAC,GLIDERN1:/164412h4030.49NI00338.59W&/A=002280
+LEMD>OGNSDR,TCPIP*,qAC,GLIDERN1:>164412h v0.2.8.RPI-GPU CPU:0.8 RAM:610.6/972.2MB NTP:0.3ms/-4.7ppm +63.9C 0/0Acfts[1h] RF:+50-2.4ppm/+1.52dB/+47.7dB@10km[28556]/+47.7dB@10km[1/1]
 
 and here is what I dump at the receiver just before sending it to the APRS server.
 
