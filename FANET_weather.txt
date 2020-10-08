@@ -1,0 +1,3 @@
+OGN ground station will receive weather data and forward them to APRS unless the FANET address prefix is 06
+Here is a sample record from today:
+FNT01010B>OGNFNT,qAS,DB7MJ:/085158h4733.93N/01018.50E_231/006g009t068h55 28.0dB -13.0kHz
