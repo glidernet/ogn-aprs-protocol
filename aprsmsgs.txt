@@ -42,6 +42,7 @@ OGINREACH for the Garmin InReach devices
 OGEVARIO for the eVario devices
 OGNDELAY for the IGC sanctioned championships delayed messages using OGN/IGC approved trackers, it contains the number of seconds delayed
 OGPAW for the PilotAware devices
+OGNTTN for the The Things Network devices.
 
 
 Test data:
