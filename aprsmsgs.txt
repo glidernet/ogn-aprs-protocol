@@ -24,25 +24,26 @@ OGN8A0749>OGINRE,qAS,INREACH:/173800h0425.57N/07603.56W'000/000/A=003165 id30043
 
 Where the TOCALLs are defined as the following:
 
-OGNFLR for the flarm units 
-OGNDSX for the T_advisory
-OGNTRK for the OGN tracker
-OGADSB for the ADS-B just in case someone decodes the ADS-B and want to inject the data on the OGN APRS
-OGNFNT for the FANET
-OGNPAW for the PilotAware
-OGSPOT for the SPOT 
-OGSPID for the Spider
-OGLT24 for the LiveTrack24 
-OGSKYL for the Skyline (XCsoar)
-OGCAPT for the Capture
-OGNAVI for the Naviter devices 
-OGNMAV for the MAVlink from drones
-OGFLYM for the Flymaster devices
-OGINREACH for the Garmin InReach devices
-OGEVARIO for the eVario devices
-OGNDELAY for the IGC sanctioned championships delayed messages using OGN/IGC approved trackers, it contains the number of seconds delayed
-OGPAW for the PilotAware devices
-OGNTTN for the The Things Network devices.
+OGNFLR 		for the flarm units 			http://flarm.com
+OGNDSX 		for the T_advisory			http://www.d-s-x.net/
+OGNTRK 		for the OGN tracker			http://wiki.glidernet.org
+OGADSB 		for the ADS-B just in case someone decodes the ADS-B and want to inject the data on the OGN APRS
+OGNFNT 		for the FANET				https://www.skytraxx.eu/
+OGNPAW 		for the PilotAware			https://www.pilotaware.com/
+OGSPOT 		for the SPOT 				https://www.findmespot.com/
+OGSPID 		for the Spider				https://www.spidertracks.com/
+OGLT24 		for the LiveTrack24 			https://www.livetrack24.com/
+OGSKYL 		for the Skyline 			https://www.xcsoar.org/
+OGCAPT 		for the Capture
+OGNAVI 		for the Naviter devices 		http://naviter.com
+OGNMAV 		for the MAVlink from drones		https://ardupilot.org/dev/docs/mavlink-basics.html
+OGFLYM 		for the Flymaster devices		https://www.flymaster.net/
+OGINREACH 	for the Garmin InReach devices		https://discover.garmin.com/en-US/inreach/personal/
+OGEVARIO 	for the eVario devices			https://apps.apple.com/us/app/evario-variometer-paraglider/id1243708983
+OGNDELAY 	for the IGC sanctioned championships delayed messages using OGN/IGC approved trackers, it contains the number of seconds delayed
+OGPAW 		for the PilotAware devices		https://www.pilotaware.com/
+OGNTTN 		for the The Things Network devices.	https://www.thethingsnetwork.org/
+OGAVZ  		for the AVIAZE devices.			https://www.aviaze.com/
 
 
 Test data:
