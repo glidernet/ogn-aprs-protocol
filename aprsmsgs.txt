@@ -44,6 +44,7 @@ OGNDELAY 	for the IGC sanctioned championships delayed messages using OGN/IGC ap
 OGPAW 		for the PilotAware devices		https://www.pilotaware.com/
 OGNTTN 		for the The Things Network devices.	https://www.thethingsnetwork.org/
 OGAVZ  		for the AVIAZE devices.			https://www.aviaze.com/
+OGNSKY  	for the SafeSky devices/app		https://www.safesky.app/en 
 
 
 Test data:
@@ -81,9 +82,10 @@ OGN6A90C5>OGNTRK,qAS,LEMD:>154217h h02 v01 0sat/0/27dB 0m 933.3hPa +31.8degC 19.
 OGN6A90C5>OGNTRK,qAS,LEMD:>154223h h02 v01 0sat/0/27dB 0m 933.3hPa +31.8degC 19.6% 2.98V 14/-98.0dBm 0/min
 OGN06A4D0>OGEVARIO,qAS,EVARIO:/054700h4223.23N/00902.69E'251/005/A=001130 !W34! id1F06A4D0 +000fpm +0rot gps8x3
 
-
 LEMD>OGNSDR,TCPIP*,qAC,GLIDERN1:/164412h4030.49NI00338.59W&/A=002280
 LEMD>OGNSDR,TCPIP*,qAC,GLIDERN1:>164412h v0.2.8.RPI-GPU CPU:0.8 RAM:610.6/972.2MB NTP:0.3ms/-4.7ppm +63.9C 0/0Acfts[1h] RF:+50-2.4ppm/+1.52dB/+47.7dB@10km[28556]/+47.7dB@10km[1/1]
+SKY3E5906>OGNSKY,qAS,SafeSky:/072446h5103.98N/00524.51E'197/034/A=001250 !W45! id1C3E5906 +000fpm gps4x1
+SKY3E5906>OGNSKY,qAS,SafeSky:/072618h5103.41N/00525.12E'118/033/A=001253 !W64! id1C3E5906 +000fpm gps4x1
 
 and here is what we dump at the receiver just before sending it to the APRS server.
 
