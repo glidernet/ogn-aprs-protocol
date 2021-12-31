@@ -1,36 +1,20 @@
-# The following are two example upload sequences from real captured
-# mycloudbase tracker [OGNMYC] sessions (https://mycloudbase.com/tracker) 
-# Captured 30/12/2021 with V8.4.0
+# APRS callsign is MYC plus the OGN device ID, e.g. MYC78FF44
+# passcode generated as per https://github.com/magicbug/PHP-APRS-Passcode
 #
-# user id is min 3 max 9 chars, capitals, A-Z0-9 as per http://www.aprs-is.net/Connecting.aspx
-# passcode generates as per https://github.com/magicbug/PHP-APRS-Passcode
 # id number format: 0bSTttttaa  where ST always 0b00, tttt is transport type, and aa is 0b11 (OGN device)
-#                   0xYYYYYY    where YYYYYY is registered at http://ddb.glidernet.org/ from random 6 digit hex
+#                   0xYYYYYY    where YYYYYY is registered OGN device ID
 #
-#   + tttt as per http://wiki.glidernet.org/wiki:ogn-flavoured-aprs
-#   + it is expected future versions may add pilot name, model, and competition number
-#      as per http://wiki.glidernet.org/aprs-interaction-examples)
+# - tttt as per http://wiki.glidernet.org/wiki:ogn-flavoured-aprs
+# - OGN device ID registered at http://ddb.glidernet.org/ from random 6 digit hex
+#
+# Additional information provided as per http://wiki.glidernet.org/aprs-interaction-examples)
+#
+# Note that any status or position updates sent more frequently than 15 seconds are ignored by the servers
 #
 # R. Hunt
-# 30/12/2021
+# 31/12/2021
 #
-
-# Example 1 - OGN Device ID has been provided by user, 30 minute track
-#
-user RNHUNT pass 10157 vers MyCloudbaseTracker 8.4.0
-RNHUNT>OGNMYC:/093946h5205.34N/00207.12W'000/000/A=000131 id1B78FF44
-user RNHUNT pass 10157 vers MyCloudbaseTracker 8.4.0
-RNHUNT>OGNMYC:/094015h5205.35N/00207.12W'000/000/A=000137 id1B78FF44
-RNHUNT>OGNMYC:/094045h5205.35N/00207.12W'041/000/A=000131 id1B78FF44
-RNHUNT>OGNMYC:/094115h5205.34N/00207.12W'198/001/A=000124 id1B78FF44
-RNHUNT>OGNMYC:/094145h5205.34N/00207.12W'000/000/A=000124 id1B78FF44
-user RNHUNT pass 10157 vers MyCloudbaseTracker 8.4.0
-RNHUNT>OGNMYC:/094215h5205.34N/00207.12W'000/000/A=000124 id1B78FF44
-
-etc.
-
-
-# Example 2 - No OGN Device ID, a single location uploaded
-#
-user RNHUNT pass 10157 vers MyCloudbaseTracker 8.4.0
-RNHUNT>OGNMYC:/103741h5205.33N/00207.12W'000/000/A=000121
+# Example login, status and position report:
+user MYC78FF44 pass 14334 vers MyCloudbaseTracker 8.4.0
+MYC78FF44>OGNMYC:>140735h Pilot=RichardHunt Model=debug ID=42
+MYC78FF44>OGNMYC:/140814h5205.34N/00207.12W'000/000/A=000095 id1B78FF44
