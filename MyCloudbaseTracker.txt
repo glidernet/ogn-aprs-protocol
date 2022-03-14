@@ -1,0 +1,20 @@
+# APRS callsign is MYC plus the OGN device ID, e.g. MYC78FF44
+# passcode generated as per https://github.com/magicbug/PHP-APRS-Passcode
+#
+# id number format: 0bSTttttaa  where ST always 0b00, tttt is transport type, and aa is 0b11 (OGN device)
+#                   0xYYYYYY    where YYYYYY is registered OGN device ID
+#
+# - tttt as per http://wiki.glidernet.org/wiki:ogn-flavoured-aprs
+# - OGN device ID registered at http://ddb.glidernet.org/ from random 6 digit hex
+#
+# Additional information provided as per http://wiki.glidernet.org/aprs-interaction-examples)
+#
+# Note that any status or position updates sent more frequently than 15 seconds are ignored by the servers
+#
+# R. Hunt
+# 31/12/2021
+#
+# Example login, status and position report:
+user MYC78FF44 pass 14334 vers MyCloudbaseTracker 8.4.0
+MYC78FF44>OGNMYC:>140735h Pilot=RichardHunt Model=debug ID=42
+MYC78FF44>OGNMYC:/140814h5205.34N/00207.12W'000/000/A=000095 id1B78FF44

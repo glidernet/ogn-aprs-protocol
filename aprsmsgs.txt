@@ -47,8 +47,12 @@ OGNHEL 		for the Helium LoRaWan devices.		https://www.helium.com/
 OGAVZ  		for the AVIAZE devices.			https://www.aviaze.com/
 OGNSKY  	for the SafeSky devices/app		https://www.safesky.app/en 
 OGNMKT  	for the MicroTrack devices		
+<<<<<<< HEAD
 OGNEMO  	for the Canadian NEMO devices		
 
+=======
+OGNMYC    for MyCloudbase Tracker       https://mycloudbase.com/tracker/
+>>>>>>> dbc3ed0bb63a22b2a3c88d99b6b0573021b2b65f
 
 Test data:
 This is what I see coming out of the APRS server:
