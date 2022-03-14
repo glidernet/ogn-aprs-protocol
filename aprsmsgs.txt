@@ -43,9 +43,11 @@ OGEVARIO 	for the eVario devices			https://apps.apple.com/us/app/evario-variomet
 OGNDELAY 	for the IGC sanctioned championships delayed messages using OGN/IGC approved trackers, it contains the number of seconds delayed
 OGPAW 		for the PilotAware devices		https://www.pilotaware.com/
 OGNTTN 		for the The Things Network devices.	https://www.thethingsnetwork.org/
+OGNHEL 		for the Helium LoRaWan devices.		https://www.helium.com/
 OGAVZ  		for the AVIAZE devices.			https://www.aviaze.com/
 OGNSKY  	for the SafeSky devices/app		https://www.safesky.app/en 
 OGNMKT  	for the MicroTrack devices		
+OGNEMO  	for the Canadian NEMO devices		
 
 
 Test data:
