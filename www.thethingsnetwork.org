@@ -17,3 +17,7 @@ To connect a device it needs to have a LoRaWAN module, either on board, as a shi
 
 The Things Node and Uno use the Arduino platform and Microchip RN modules. We’ve built an Arduino SDK which enables you to send a message in just a couple lines of code. We plan to provide SDKs for more IoT platforms as well.
 
+
+
+https://www.thethingsindustries.com/docs/ 
+https://www.thethingsindustries.com/docs/getting-started/
