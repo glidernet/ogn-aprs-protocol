@@ -64,6 +64,7 @@ OGNSKY  	for the SafeSky devices/app		https://www.safesky.app/en
 OGNMKT  	for the MicroTrack devices		
 OGNEMO  	for the Canadian NEMO devices		
 OGNMYC    	for MyCloudbase Tracker       		https://mycloudbase.com/tracker/
+OGSTUX          for Stratux trackers
 
 Test data:
 This is what I see coming out of the APRS server:
