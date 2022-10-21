@@ -42,7 +42,7 @@ OGNFLR 		for the flarm units 			http://flarm.com
 OGFLR 		for the flarm units 			http://flarm.com
 OGNDSX 		for the T_advisory			http://www.d-s-x.net/
 OGNTRK 		for the OGN tracker			http://wiki.glidernet.org
-OGADSB 		for the ADS-B just in case someone decodes the ADS-B and want to inject the data on the OGN APRS
+OGADSB 		for the ADS-B 				https://www.adsbexchange.com/ 
 OGNFNT 		for the FANET				https://www.skytraxx.eu/
 OGNPAW 		for the PilotAware			https://www.pilotaware.com/
 OGSPOT 		for the SPOT 				https://www.findmespot.com/
@@ -95,6 +95,7 @@ ICA404EC3>OGPAW,qAS,UKWOG:/104341h5211.18N\00032.53W^131/081/A=004010 !W85! id21
 ICA34364F>OGADSB,qAS,LEMDadsb:/140827h4038.69N\00344.37W^235/248/A=010350 id2534364F +1792fpm  fnANE06BK  
 ICA392AE8>OGADSB,qAS,LEMDadsb:/140832h4024.68N\00404.02W^025/406/A=035975 id25392AE8 +000fpm  fnAFR12CP  
 ICA4CA1FF>OGADSB,qAS,LEMDadsb:/140833h4044.38N\00356.29W^024/426/A=040000 id254CA1FF +000fpm  fnRYR6ZM   
+ICAA4FFC0>OGADSB,qAS,ADSBExch:/151612h4002.40N/10513.83W'0/001/A=005275 !W00! id05A4FFC0 +0fpm +0.0rot 0.0dB 0e +0.0kHz gps2x3
 
 OGN6A90C5>OGNTRK,qAS,LEMD:>154210h h02 v01 0sat/0/29dB 0m 933.3hPa +31.8degC 19.6% 2.98V 14/-98.0dBm 0/min
 OGN6A90C5>OGNTRK,qAS,LEMD:>154217h h02 v01 0sat/0/27dB 0m 933.3hPa +31.8degC 19.6% 2.98V 14/-98.0dBm 0/min
