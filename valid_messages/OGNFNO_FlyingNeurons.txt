@@ -1,0 +1,6 @@
+# The following messages are examples for NEURONE's APRS format from Flying Neurons
+# source: https://github.com/glidernet/ogn-aprs-protocol
+#
+FNO0003F4>OGNFNO,qAS,Neurone:/171603h4338.04N/00510.74E'316/000/A=000623 !W28! id200003F4 +000fpm +0.0rot
+FNO0003F4>OGNFNO,qAS,Neurone:/171604h4337.04N/00510.73E'316/000/A=000626 !W27! id200003F4 +019fpm +0.0rot
+FNO0003F4>OGNFNO,qAS,Neurone:/171605h4336.04N/00510.72E'316/000/A=000626 !W27! id200003F4 +000fpm +0.0rot
