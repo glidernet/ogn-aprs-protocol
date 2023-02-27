@@ -1,0 +1,26 @@
+# The following beacons are examples of the APRS format for OGNbase ground stations
+# source: https://github.com/glidernet/ogn-aprs-protocol
+#
+# Station position message:
+K2B9>OGNSXR,TCPIP*,qAC,GLIDERN0:/000627h4353.05NI07215.22W&/A=000692
+#
+# Station status message:
+K2B9>OGNSXR,TCPIP*,qAC,GLIDERN0:>235055h vMB100-ESP32-OGNbase 3.7V 0/min 0/0Acfts[1h] 8sat time_synched 120_m_r_uptime
+# Where the fields are:
+#    235055h              time stamp
+#    vMB101-ESP32-OGNbase software version and type of hardware
+#    3.7V                 battery voltage (in remote relay station if used)
+#    0/min                traffic packets received in the last minute
+#    0/0Acfts[1h]         number of unique aircraft heard from in the last hour
+#    8sat                 number of GNSS satellites received (in remote relay station)
+#    time_synched         the base station is receiving GNSS time from the remote relay station
+#    0_m_r_uptime         the remote relay station has been "up" for less than 10 minutes
+#    120_m_r_uptime       the remote relay station has been "up" for (approximately) 120 minutes
+# Additional data fields  may include:
+#    331_m_uptime         the base station has been "up" for 331 minutes
+#    time_not_synched     the base station is not receiving GNSS time from the remote relay station
+#    1325_m_sleep         the base station will soon go to sleep for 1325 minutes
+#    1325_m_r_sleep       the remote relay station will soon go to sleep for 1325 minutes
+#
+# Traffic messages: (same format as OGSDR stations)
+FLR1EFCCC>OGFLR,qAS,K2B9:/172500h4432.07N/07306.44W^000/000/A=000646 !W72! id061EFCCC +039fpm +0.0rot 67.0dB 0e -0.0kHz
