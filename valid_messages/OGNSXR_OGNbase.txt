@@ -5,15 +5,15 @@
 K2B9>OGNSXR,TCPIP*,qAC,GLIDERN0:/000627h4353.05NI07215.22W&/A=000692
 
 # Station status messages:
-K2B9>OGNSDR,TCPIP*,qAC,GLIDERN0:>152545h vMB101-ESP32-OGNbase 3.7V 0/min 0/0Acfts[1h] 10sat time_synched 0_m_r_uptime
-K2B9>OGNSDR,TCPIP*,qAC,GLIDERN0:>165504h vMB101-ESP32-OGNbase 3.8V 0/min 1/1Acfts[1h] 11sat time_synched 60_m_r_uptime
-K2B9>OGNSDR,TCPIP*,qAC,GLIDERN0:>183602h vMB101-ESP32-OGNbase 3.8V 0/min 0/0Acfts[1h] 10sat time_synched 180_m_r_uptime
-K2B9>OGNSDR,TCPIP*,qAC,GLIDERN0:>194204h vMB101-ESP32-OGNbase 3.8V 0/min 0/0Acfts[1h] 9sat time_synched 240_m_r_uptime
-K2B9>OGNSDR,TCPIP*,qAC,GLIDERN0:>194557h vMB101-ESP32-OGNbase 3.8V 9sat time_synched 1155_m_r_sleep
-K2B9>OGNSDR,TCPIP*,qAC,GLIDERN0:>195343h vMB101-ESP32-OGNbase time_not_synched 269_m_uptime
-K2B9>OGNSDR,TCPIP*,qAC,GLIDERN0:>210003h vMB101-ESP32-OGNbase 3.8V 0/min 0/0Acfts[1h] 6sat time_synched 0_m_r_uptime
-K2B9>OGNSDR,TCPIP*,qAC,GLIDERN0:>170017h vMB101-ESP32-OGNbase 3.6V 10sat time_synched 1325_m_r_sleep
-K2B9>OGNSDR,TCPIP*,qAC,GLIDERN0:>170803h vMB101-ESP32-OGNbase time_not_synched
+K2B9>OGNSXR,TCPIP*,qAC,GLIDERN0:>152545h vMB101-ESP32-OGNbase 3.7V 0/min 0/0Acfts[1h] 10sat time_synched 0_m_r_uptime
+K2B9>OGNSXR,TCPIP*,qAC,GLIDERN0:>165504h vMB101-ESP32-OGNbase 3.8V 0/min 1/1Acfts[1h] 11sat time_synched 60_m_r_uptime
+K2B9>OGNSXR,TCPIP*,qAC,GLIDERN0:>183602h vMB101-ESP32-OGNbase 3.8V 0/min 0/0Acfts[1h] 10sat time_synched 180_m_r_uptime
+K2B9>OGNSXR,TCPIP*,qAC,GLIDERN0:>194204h vMB101-ESP32-OGNbase 3.8V 0/min 0/0Acfts[1h] 9sat time_synched 240_m_r_uptime
+K2B9>OGNSXR,TCPIP*,qAC,GLIDERN0:>194557h vMB101-ESP32-OGNbase 3.8V 9sat time_synched 1155_m_r_sleep
+K2B9>OGNSXR,TCPIP*,qAC,GLIDERN0:>195343h vMB101-ESP32-OGNbase time_not_synched 269_m_uptime
+K2B9>OGNSXR,TCPIP*,qAC,GLIDERN0:>210003h vMB101-ESP32-OGNbase 3.8V 0/min 0/0Acfts[1h] 6sat time_synched 0_m_r_uptime
+K2B9>OGNSXR,TCPIP*,qAC,GLIDERN0:>170017h vMB101-ESP32-OGNbase 3.6V 10sat time_synched 1325_m_r_sleep
+K2B9>OGNSXR,TCPIP*,qAC,GLIDERN0:>170803h vMB101-ESP32-OGNbase time_not_synched
 
 # Traffic messages: (similar to OGSDR stations)
 FLR1EFCCC>OGFLR,qAS,K2B9:/172500h4432.07N/07306.44W^000/000/A=000646 !W72! id061EFCCC +039fpm 67.0dB
