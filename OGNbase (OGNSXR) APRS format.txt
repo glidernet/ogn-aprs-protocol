@@ -1,0 +1,65 @@
+Format of APRS messages from OGNbase ground stations
+
+Source: https://github.com/glidernet/ogn-aprs-protocol
+Last edited: Feb. 28, 2023
+
+
+OGNbase is alternative OGN ground station technology using simple low-power hardware based on the ESP32 "system on a chip".  OGNbase also offers the "relay" mode of operation, where the "remote" station is located at a high point for good reception of signals from aircraft, and the "base" station (also a simple ESP32-based device) is located where there is internet access.  The two stations communicate via radio. The remote station may run on a small solar panel, and automatically enters a very-low-power "sleep" mode at night, when there is no traffic, or when its battery is depleted.  Source code, compiled binaries and documentation are here: https://github.com/moshe-braner/Open-Glider-Network-Groundstation
+
+The "tocall" OGNSXR was chosen for OGNbase, to distinguish it from the common SDR-RTL based systems.  The ESP32 boards currently used include a radio chip from the Semtech sx12__ series.  This hardware/software combination can only listen to one frequency at a time, and decodes only one protocol at a time - the one transmitted by FLARM and compatible devices.
+
+
+Traffic messages
+
+These messages are in a similar format to those sent by OGSDR stations, but some of the data fields are not available and therefore skipped.  Here are two examples, the first uses a FLARM device ID, the second an ICAO aircraft ID:
+
+FLR1EFCCC>OGFLR,qAS,K2B9:/172500h4432.07N/07306.44W^000/000/A=000646 !W72! id061EFCCC +039fpm 67.0dB
+ICAD23456>OGFLR,qAS,K2B9:/172500h4432.07N/07306.44W^000/000/A=000646 !W72! id06D23456 +039fpm 67.0dB
+
+These examples report an aircraft from the time 172500h located at 44 32.07N and 073 06.44W at altitude 646  climbing at 39 fpm.  For more information about this type of message see: http://wiki.glidernet.org/wiki:ogn-flavoured-aprs
+
+SoftRF (from version MB09k) in flying aircraft forwards radio packets from landed aircraft.  To avoid recursive forwarding, it changes the address (ID) type in the packet, to values not otherwise used by FLARM.  OGNbase restores the original address types when it reports the traffic to OGN, but for the callsign prefix it uses ICZ and FLZ instead of ICA and FLR, to mark this traffic.  For example:
+
+FLZ1EFCCC>OGFLR,qAS,K2B9:/172500h4432.07N/07306.44W^000/000/A=000646 !W72! id061EFCCC +039fpm 67.0dB
+ICZD23456>OGFLR,qAS,K2B9:/172500h4432.07N/07306.44W^000/000/A=000646 !W72! id06D23456 +039fpm 67.0dB
+
+
+Station position message
+
+These messages are in the standard format, but using the "tocall" OGNSXR.  For example:
+
+K2B9>OGNSXR,TCPIP*,qAC,GLIDERN0:/000627h4353.05NI07215.22W&/A=000692
+
+
+Station status messages
+
+The data fields in OGNbase station status message vary between messages, depending on the operational status of the stations - both the "remote" and "base" stations when using the "relay" method.  An example of the most common status while fully operational and with the base station using the exact UTC time data sent from the relay station (for correct frequency hopping):
+
+K2B9>OGNSDR,TCPIP*,qAC,GLIDERN0:>183602h vMB101-ESP32-OGNbase 3.8V 55/min 2/3Acfts[1h] 10sat time_synched 180_m_r_uptime
+
+Where the fields are:
+    183602h              time stamp
+    vMB101-ESP32-OGNbase software version and type of hardware
+    3.7V                 battery voltage (in remote relay station if used)
+    55/min               traffic packets received in the last minute
+    2/3Acfts[1h]         number of unique aircraft heard from in the last hour (visible/total)
+    8sat                 number of GNSS satellites received (in remote relay station)
+    time_synched         the base station is receiving GNSS time from the remote relay station
+    180_m_r_uptime       the remote relay station has been "up" for roughly 180 minutes
+
+Here are annotated status messages with varying formats:
+
+K2B9>OGNSDR,TCPIP*,qAC,GLIDERN0:>194557h vMB101-ESP32-OGNbase 3.8V 9sat time_synched 1155_m_r_sleep
+- the remote relay station will soon go to sleep for 1155 minutes
+
+K2B9>OGNSDR,TCPIP*,qAC,GLIDERN0:>170017h vMB101-ESP32-OGNbase time_not_synched 1017_m_sleep
+- the base station will soon go to sleep for 1017 minutes (optionally following the remote)
+- expect no status messages while it sleeps
+
+K2B9>OGNSDR,TCPIP*,qAC,GLIDERN0:>195343h vMB101-ESP32-OGNbase time_not_synched 9_m_uptime
+- the base station has been "up" for 9 minutes
+- the base station is not receiving GNSS time from the remote relay station
+- the remote station is either still sleeping, or has not acquired a GNSS fix yet
+
+K2B9>OGNSDR,TCPIP*,qAC,GLIDERN0:>183602h vMB101-ESP32-OGNbase 3.8V 0/min 0/0Acfts[1h] 10sat time_synched 0_m_r_uptime
+- the remote relay station has been "up" for less than 10 minutes
