@@ -35,7 +35,7 @@ Station status messages
 
 The data fields in OGNbase station status message vary between messages, depending on the operational status of the stations - both the "remote" and "base" stations when using the "relay" method.  An example of the most common status while fully operational and with the base station using the exact UTC time data sent from the relay station (for correct frequency hopping):
 
-K2B9>OGNSDR,TCPIP*,qAC,GLIDERN0:>183602h vMB101-ESP32-OGNbase 3.8V 55/min 2/3Acfts[1h] 10sat time_synched 180_m_r_uptime
+K2B9>OGNSXR,TCPIP*,qAC,GLIDERN0:>183602h vMB101-ESP32-OGNbase 3.8V 55/min 2/3Acfts[1h] 10sat time_synched 180_m_r_uptime
 
 Where the fields are:
     183602h              time stamp
@@ -49,17 +49,17 @@ Where the fields are:
 
 Here are annotated status messages with varying formats:
 
-K2B9>OGNSDR,TCPIP*,qAC,GLIDERN0:>194557h vMB101-ESP32-OGNbase 3.8V 9sat time_synched 1155_m_r_sleep
+K2B9>OGNSXR,TCPIP*,qAC,GLIDERN0:>194557h vMB101-ESP32-OGNbase 3.8V 9sat time_synched 1155_m_r_sleep
 - the remote relay station will soon go to sleep for 1155 minutes
 
-K2B9>OGNSDR,TCPIP*,qAC,GLIDERN0:>170017h vMB101-ESP32-OGNbase time_not_synched 1017_m_sleep
+K2B9>OGNSXR,TCPIP*,qAC,GLIDERN0:>170017h vMB101-ESP32-OGNbase time_not_synched 1017_m_sleep
 - the base station will soon go to sleep for 1017 minutes (optionally following the remote)
 - expect no status messages while it sleeps
 
-K2B9>OGNSDR,TCPIP*,qAC,GLIDERN0:>195343h vMB101-ESP32-OGNbase time_not_synched 9_m_uptime
+K2B9>OGNSXR,TCPIP*,qAC,GLIDERN0:>195343h vMB101-ESP32-OGNbase time_not_synched 9_m_uptime
 - the base station has been "up" for 9 minutes
 - the base station is not receiving GNSS time from the remote relay station
 - the remote station is either still sleeping, or has not acquired a GNSS fix yet
 
-K2B9>OGNSDR,TCPIP*,qAC,GLIDERN0:>183602h vMB101-ESP32-OGNbase 3.8V 0/min 0/0Acfts[1h] 10sat time_synched 0_m_r_uptime
+K2B9>OGNSXR,TCPIP*,qAC,GLIDERN0:>183602h vMB101-ESP32-OGNbase 3.8V 0/min 0/0Acfts[1h] 10sat time_synched 0_m_r_uptime
 - the remote relay station has been "up" for less than 10 minutes
