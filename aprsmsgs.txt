@@ -25,6 +25,7 @@ FLRDD91FF>OGFLR,qAS,CVVMN:/141056h4324.37N/00159.37E'000/000/A=001463 !W96! id06
 FLRDDD30E>OGFLR,qAS,LFCS:/141057h4441.41N/00036.29W'182/058/A=002704 !W80! id06DDD30E +871fpm -4.1rot 14.0dB -2.0kHz gps3x4
 FLRDDDBF7>OGFLR,qAS,LFCS:/141057h4440.55N/00036.32W'329/046/A=002956 !W71! id06DDDBF7 +158fpm +5.7rot 9.5dB +3.4kHz gps3x4
 FLRDDD30E>OGFLR,qAS,LFCS:/141058h4441.40N/00036.28W'164/057/A=002720 !W25! id06DDD30E +772fpm -4.3rot 16.8dB -2.0kHz gps3x4
+OGN631C45>OGADSL,qAS,OxfBarton:/104536h5145.96N/00111.47W'267/000/A=000312 !W25! id07631C45 -177fpm 22.8dB +2.5kHz gps63x63
 
 
 and if coming from an ADSB receiver:
@@ -42,10 +43,11 @@ OGNFLR 		for the flarm units 			http://flarm.com
 OGFLR 		for the flarm units 			http://flarm.com
 OGNDSX 		for the T_advisory			http://www.d-s-x.net/
 OGNTRK 		for the OGN tracker			http://wiki.glidernet.org
+OGADSL 		for the OGN tracker with ADS-L protocol http://wiki.glidernet.org
 OGADSB 		for the ADS-B 				https://www.adsbexchange.com/ 
 OGNFNT 		for the FANET				https://www.skytraxx.eu/
 OGNPAW 		for the PilotAware			https://www.pilotaware.com/
-OGSPOT 		for the SPOT 				https://www.findmespot.com/
+OGSPOT 		for the SPOT 				https://www.findmespot.com
 OGSPID 		for the Spider				https://www.spidertracks.com/
 OGLT24 		for the LiveTrack24 			https://www.livetrack24.com/
 OGSKYL 		for the Skyline 			https://www.xcsoar.org/
