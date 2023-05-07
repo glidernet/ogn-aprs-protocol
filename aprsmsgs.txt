@@ -55,7 +55,7 @@ OGCAPT 		for the Capture
 OGNAVI 		for the Naviter devices 		http://naviter.com
 OGNMAV 		for the MAVlink from drones		https://ardupilot.org/dev/docs/mavlink-basics.html
 OGFLYM 		for the Flymaster devices		https://www.flymaster.net/
-OGINREACH 	for the Garmin InReach devices		https://discover.garmin.com/en-US/inreach/personal/
+OGINRE 		for the Garmin InReach devices		https://discover.garmin.com/en-US/inreach/personal/
 OGEVARIO 	for the eVario devices			https://apps.apple.com/us/app/evario-variometer-paraglider/id1243708983
 OGNDELAY 	for the IGC sanctioned championships delayed messages using OGN/IGC approved trackers, it contains the number of seconds delayed
 OGPAW 		for the PilotAware devices		https://www.pilotaware.com/
