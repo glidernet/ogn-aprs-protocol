@@ -68,6 +68,7 @@ OGNEMO  	for the Canadian NEMO devices
 OGNMYC    	for MyCloudbase Tracker       		https://mycloudbase.com/tracker/
 OGSTUX          for Stratux trackers
 OGNSXR          for moshe.braner@gmail.com		https://github.com/moshe-braner/Open-Glider-Network-Groundstation
+OGAIRM		for AirMate 				(https://www.airmate.aero)
 
 Test data:
 This is what I see coming out of the APRS server:
