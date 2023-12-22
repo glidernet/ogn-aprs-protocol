@@ -1,0 +1,4 @@
+# The following beacons are example for flyxc APRS format
+# source: https://github.com/glidernet/ogn-aprs-protocol
+#
+FXC201699>FXCAPP,qAS,FLYXC:/114100h3236.19S/01903.01Eg312/017/A=003474 !W05! id1E201699
