@@ -2,7 +2,7 @@
 Propossal for a new set of OGN APRS messages:
 
 With the possibility of provide new source of data information to the OGN users, in addition to the standard APRS messages sent by the OGN stations deployed around the world,
-new sources of information are availaible now like SPOT devices, Spider devices, LT24 devices, Oudies or LX900 devices, Capture devices, Skylines devices like XCsoar, PilotAware devices, etc, ...
+new sources of information are availaible now like SPOT devices, Spider devices, LT24 devices, Oudies or LX900 devices, Capture devices, Skylines devices like XCsoar, PilotAware devices, APIK devices, etc, ...
 We should open the OGN APRS server to other sources of data.
 
 
@@ -71,6 +71,7 @@ OGSTUX          for Stratux trackers
 OGNSXR          for moshe.braner@gmail.com		https://github.com/moshe-braner/Open-Glider-Network-Groundstation
 OGAIRM		for AirMate 				(https://www.airmate.aero)
 FXCAPP		for flyxc 				(https://flyxc.app/)
+OGAPIK		for APIK OEM and compliant devices	https://api-k.com
 
 Test data:
 This is what I see coming out of the APRS server:
@@ -116,6 +117,8 @@ SKY3E5906>OGNSKY,qAS,SafeSky:/072618h5103.41N/00525.12E'118/033/A=001253 !W64! i
 MTK895B2D>OGNMTK,qAS,Microtrak:/195300h4849.11N/00216.49E'000/000/A=000472 !W72! id07895B2D
 MTK895B2D>OGNMTK,qAS,Microtrak:/195300h4849.11N/00216.49E'000/000/A=000472 !W72! id07895B2D
 MTK6FC895>OGNMTK,qAS,Microtrak:/195346h4849.09N/00216.52E'000/000/A=000295 !W18! id076FC895
+
+FLRDDA396>OGAPIK,qAS,APIK:/113700h4520.00N/00510.00E'000/050/A=000472 !W37! id07DDA396 euiecdb86fffe00001b
 
 and here is what we dump at the receiver just before sending it to the APRS server.
 
