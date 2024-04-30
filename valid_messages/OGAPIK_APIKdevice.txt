@@ -1,0 +1,7 @@
+# The following beacons are example for the APIK APRS format
+#
+# APIK compliant device can send data in the name of a FLARM device.
+# if field is the same than FLARM one
+# eui field contains the original device eui64
+#
+FLRDDA396>OGAPIK,qAS,APIK:/113700h4520.00N/00510.00E'000/050/A=000472 !W37! id07DDA396 euiecdb86fffe00001b
