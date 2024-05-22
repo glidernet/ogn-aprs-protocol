@@ -1,7 +1,8 @@
 Format of APRS messages from OGNbase ground stations
 
 Source: https://github.com/glidernet/ogn-aprs-protocol
-Last edited: Feb. 28, 2023
+
+This version last edited to fit OGNbase MB139: May 22, 2024
 
 
 OGNbase is alternative OGN ground station technology using simple low-power hardware based on the ESP32 "system on a chip".  OGNbase also offers the "relay" mode of operation, where the "remote" station is located at a high point for good reception of signals from aircraft, and the "base" station (also a simple ESP32-based device) is located where there is internet access.  The two stations communicate via radio. The remote station may run on a small solar panel, and automatically enters a very-low-power "sleep" mode at night, when there is no traffic, or when its battery is depleted.  Source code, compiled binaries and documentation are here: https://github.com/moshe-braner/Open-Glider-Network-Groundstation
@@ -11,17 +12,19 @@ The "tocall" OGNSXR was chosen for OGNbase, to distinguish it from the common SD
 
 Traffic messages
 
-These messages are in a similar format to those sent by OGSDR stations, but some of the data fields are not available and therefore skipped.  Here are two examples, the first uses a FLARM device ID, the second an ICAO aircraft ID:
+These messages are in a similar format to those sent by OGSDR stations, but some of the data fields are not available and therefore skipped.  Here are two examples, the first uses a FLARM device ID, the second an ICAO aircraft ID with a 2-bit CRC error corrected:
 
-FLR1EFCCC>OGFLR,qAS,K2B9:/172500h4432.07N/07306.44W^000/000/A=000646 !W72! id061EFCCC +039fpm 67.0dB
-ICAD23456>OGFLR,qAS,K2B9:/172500h4432.07N/07306.44W^000/000/A=000646 !W72! id06D23456 +039fpm 67.0dB
+FLR1EFCCC>OGFLR,qAS,K2B9:/172500h4432.07N/07306.44W^000/000/A=000646 !W72! id061EFCCC +039fpm -2.1rot 28.0dB gps3x5
+ICAD23456>OGFLR,qAS,K2B9:/172500h4432.07N/07306.44W^000/000/A=000646 !W72! id06D23456 +039fpm -2.1rot 6.0dB 2e gps4x9
 
-These examples report an aircraft from the time 172500h located at 44 32.07N and 073 06.44W at altitude 646  climbing at 39 fpm.  For more information about this type of message see: http://wiki.glidernet.org/wiki:ogn-flavoured-aprs
+These examples report an aircraft from the time 172500h located at 44 32.07N and 073 06.44W at altitude 646  climbing at 39 fpm and turning left.  For more information about this type of message see: http://wiki.glidernet.org/wiki:ogn-flavoured-aprs
 
-SoftRF (from version MB09k) in flying aircraft forwards radio packets from landed aircraft.  To avoid recursive forwarding, it changes the address (ID) type in the packet, to values not otherwise used by FLARM.  OGNbase restores the original address types when it reports the traffic to OGN, but for the callsign prefix it uses ICZ and FLZ instead of ICA and FLR, to mark this traffic.  For example:
+SoftRF (from version MB09k) in flying aircraft can forward radio packets from other aircraft.  OGNbase reports relayed traffic to OGN in one of two formats, selectable via its configuration:
 
-FLZ1EFCCC>OGFLR,qAS,K2B9:/172500h4432.07N/07306.44W^000/000/A=000646 !W72! id061EFCCC +039fpm 67.0dB
-ICZD23456>OGFLR,qAS,K2B9:/172500h4432.07N/07306.44W^000/000/A=000646 !W72! id06D23456 +039fpm 67.0dB
+ICAD23456>OGFLR,qAS,K2B9:/172500h4432.07N/07306.44W^000/000/A=000646 !W72! id06D23456 +039fpm -2.1rot 15.0dB relayed
+ICAD23456>OGFLR,qAS,relayed:/172500h4432.07N/07306.44W^000/000/A=000646 !W72! id06D23456 +039fpm -2.1rot 15.0dB
+
+The second format avoids including the range of relayed packets in the station's range statistics.  (The dB SNR reported for relayed packets is for the reception at the station of the relayed packet.)
 
 
 Station position message
