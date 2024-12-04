@@ -41,6 +41,8 @@ OGN8A0749>OGINRE,qAS,INREACH:/173800h0425.57N/07603.56W'000/000/A=003165 id30043
 Where the TOCALLs are defined as the following:
 
 OGNFLR 		for the flarm units 			http://flarm.com
+OGNFLR6		for the flarm units (old version 6) 	http://flarm.com
+OGNFLR7		for the flarm units (experimental) 	http://flarm.com
 OGFLR 		for the flarm units 			http://flarm.com
 OGNDSX 		for the T_advisory			http://www.d-s-x.net/
 OGNTRK 		for the OGN tracker			http://wiki.glidernet.org
@@ -48,7 +50,7 @@ OGADSL 		for the OGN tracker with ADS-L protocol http://wiki.glidernet.org
 OGADSB 		for the ADS-B 				https://www.adsbexchange.com/ 
 OGNFNT 		for the FANET				https://www.skytraxx.eu/
 OGNPAW 		for the PilotAware			https://www.pilotaware.com/
-OGSPOT 		for the SPOT 				https://www.findmespot.com
+OGSPOT 		for the SPOT 				https://www.findmespot.c	om
 OGSPID 		for the Spider				https://www.spidertracks.com/
 OGLT24 		for the LiveTrack24 			https://www.livetrack24.com/
 OGSKYL 		for the Skyline 			https://www.xcsoar.org/
@@ -72,6 +74,7 @@ OGNSXR          for moshe.braner@gmail.com		https://github.com/moshe-braner/Open
 OGAIRM		for AirMate 				(https://www.airmate.aero)
 FXCAPP		for flyxc 				(https://flyxc.app/)
 OGAPIK		for APIK OEM and compliant devices	https://api-k.com
+OGMSHT		for meshtastic devices			https://meshtastic.org/ 
 
 Test data:
 This is what I see coming out of the APRS server:
