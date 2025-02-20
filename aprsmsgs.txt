@@ -38,6 +38,16 @@ SPO3836BC>OGSPOT,qAS,SPOT:/100956h4533.58N/00558.45E'000/000/A=000964 !W85! id05
 and if coming from the Garmin InReach server:
 OGN8A0749>OGINRE,qAS,INREACH:/173800h0425.57N/07603.56W'000/000/A=003165 id300434060496190 inReac True Ian Lewis
 
+and if coming for a weather/met station:
+LECN>OGNDVS,TCPIP*,qAC,GLIDERN1:>164506h 2223:3 2.750s/0ms 23dB/+4kHz 096/3/5kt 58.6F
+LERS>OGNDVS,TCPIP*,qAC,GLIDERN3:>165502h 2690:0 2.563s/1ms 28dB/+6kHz 158/1kt 55.4F 0.0mm/h
+Lillo>OGNDVS,TCPIP*,qAC,GLIDERN1:>170502h 1:0 2.563s/1ms 66dB/+10kHz 094/0/4kt 63.8F 0.0mm/h
+Lillo>OGNDVS,TCPIP*,qAC,GLIDERN1:>171502h 0:1 2.625s/0ms 46dB/+10kHz 311/2/5kt 63.6F 57.8% 0.0mm/h
+LERS>OGNDVS,TCPIP*,qAC,GLIDERN3:>172504h 2697:0 2.559s/213ms 25dB/+11kHz 138/0/3kt 52.4F 0.0W/m2 0.0mm/h
+LERS>OGNDVS,TCPIP*,qAC,GLIDERN3:>173503h 2726:0 2.536s/13ms 29dB/+10kHz 211/1/3kt 52.0F 95.7% 0.0mm/h
+LERS>OGNDVS,TCPIP*,qAC,GLIDERN3:>174505h 2726:0 2.535s/0ms 29dB/+10kHz 193/3/3kt 51.9F 96.0% 0.0mm/h
+LERS>OGNDVS,TCPIP*,qAC,GLIDERN3:>175503h 1297:0 2.563s/1ms 35dB/+7kHz 163/3/4kt 51.4F 90.8% 11.5mm/h
+
 Where the TOCALLs are defined as the following:
 
 OGNFLR 		for the flarm units 			http://flarm.com
@@ -75,6 +85,7 @@ OGAIRM		for AirMate 				(https://www.airmate.aero)
 FXCAPP		for flyxc 				(https://flyxc.app/)
 OGAPIK		for APIK OEM and compliant devices	https://api-k.com
 OGMSHT		for meshtastic devices			https://meshtastic.org/ 
+OGNDVS		for weather devices like Davis 		https://www.davisinstruments.com/pages/weather-stations https://www.sainlogic.com/
 
 Test data:
 This is what I see coming out of the APRS server:
