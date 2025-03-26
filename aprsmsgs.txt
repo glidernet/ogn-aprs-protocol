@@ -64,7 +64,7 @@ OGSPOT 		for the SPOT 				https://www.findmespot.com
 OGSPID 		for the Spider				https://www.spidertracks.com/
 OGLT24 		for the LiveTrack24 			https://www.livetrack24.com/
 OGSKYL 		for the Skyline 			https://www.xcsoar.org/
-OGCAPT 		for the Capture
+OGCAPT 		for the Capture       https://www.capturs.com/
 OGNAVI 		for the Naviter devices 		http://naviter.com
 OGNMAV 		for the MAVlink from drones		https://ardupilot.org/dev/docs/mavlink-basics.html
 OGFLYM 		for the Flymaster devices		https://www.flymaster.net/
@@ -76,7 +76,7 @@ OGNTTN 		for the The Things Network devices.	https://www.thethingsnetwork.org/
 OGNHEL 		for the Helium LoRaWan devices.		https://www.helium.com/
 OGAVZ  		for the AVIAZE devices.			https://www.aviaze.com/
 OGNSKY  	for the SafeSky devices/app		https://www.safesky.app/en 
-OGNMKT  	for the MicroTrack devices		
+OGNMKT  	for the MicroTrack devices		https://microtrak.fr/
 OGNEMO  	for the Canadian NEMO devices		
 OGNMYC    	for MyCloudbase Tracker       		https://mycloudbase.com/tracker/
 OGSTUX          for Stratux trackers
