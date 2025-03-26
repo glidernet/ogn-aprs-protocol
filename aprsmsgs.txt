@@ -60,7 +60,7 @@ OGADSL 		for the OGN tracker with ADS-L protocol http://wiki.glidernet.org
 OGADSB 		for the ADS-B 				https://www.adsbexchange.com/ 
 OGNFNT 		for the FANET				https://www.skytraxx.eu/
 OGNPAW 		for the PilotAware			https://www.pilotaware.com/
-OGSPOT 		for the SPOT 				https://www.findmespot.c	om
+OGSPOT 		for the SPOT 				https://www.findmespot.com
 OGSPID 		for the Spider				https://www.spidertracks.com/
 OGLT24 		for the LiveTrack24 			https://www.livetrack24.com/
 OGSKYL 		for the Skyline 			https://www.xcsoar.org/
