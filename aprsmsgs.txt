@@ -64,7 +64,7 @@ OGSPOT 		for the SPOT 				https://www.findmespot.com
 OGSPID 		for the Spider				https://www.spidertracks.com/
 OGLT24 		for the LiveTrack24 			https://www.livetrack24.com/
 OGSKYL 		for the Skyline 			https://www.xcsoar.org/
-OGCAPT 		for the Capture       https://www.capturs.com/
+OGCAPT 		for the Capture 			https://www.capturs.com/
 OGNAVI 		for the Naviter devices 		http://naviter.com
 OGNMAV 		for the MAVlink from drones		https://ardupilot.org/dev/docs/mavlink-basics.html
 OGFLYM 		for the Flymaster devices		https://www.flymaster.net/
