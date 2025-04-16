@@ -1,0 +1,8 @@
+# The following beacons are example for Wingman APRS format
+# source: https://github.com/glidernet/ogn-aprs-protocol
+#
+# The id07N0ABC7A39 is the from the user defined callsign (N0ABC7)
+# and from the generated 6 characters for the identification
+# of the device used. 
+#
+N0ABC7>OGNWMN,qAS,WMN:/134300h4923.60N/01535.54E'000/000/A=001624 id07N0ABC7A39971
