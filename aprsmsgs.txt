@@ -86,6 +86,7 @@ FXCAPP		for flyxc 				(https://flyxc.app/)
 OGAPIK		for APIK OEM and compliant devices	https://api-k.com
 OGMSHT		for meshtastic devices			https://meshtastic.org/ 
 OGNDVS		for weather devices like Davis 		https://www.davisinstruments.com/pages/weather-stations https://www.sainlogic.com/
+OGNWMN      for the Wingman             https://www.wingmanfly.app/
 
 Test data:
 This is what I see coming out of the APRS server:
