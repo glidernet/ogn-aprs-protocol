@@ -48,6 +48,9 @@ LERS>OGNDVS,TCPIP*,qAC,GLIDERN3:>173503h 2726:0 2.536s/13ms 29dB/+10kHz 211/1/3k
 LERS>OGNDVS,TCPIP*,qAC,GLIDERN3:>174505h 2726:0 2.535s/0ms 29dB/+10kHz 193/3/3kt 51.9F 96.0% 0.0mm/h
 LERS>OGNDVS,TCPIP*,qAC,GLIDERN3:>175503h 1297:0 2.563s/1ms 35dB/+7kHz 163/3/4kt 51.4F 90.8% 11.5mm/h
 
+
+---------------------------------------------------------------------------------------------------------------------------------
+
 Where the TOCALLs are defined as the following:
 
 OGNFLR 		for the flarm units 			http://flarm.com
@@ -86,7 +89,10 @@ FXCAPP		for flyxc 				(https://flyxc.app/)
 OGAPIK		for APIK OEM and compliant devices	https://api-k.com
 OGMSHT		for meshtastic devices			https://meshtastic.org/ 
 OGNDVS		for weather devices like Davis 		https://www.davisinstruments.com/pages/weather-stations https://www.sainlogic.com/
-OGNWMN      for the Wingman             https://www.wingmanfly.app/
+OGNWMN      	for the Wingman             		https://www.wingmanfly.app/
+
+
+---------------------------------------------------------------------------------------------------------------------------------
 
 Test data:
 This is what I see coming out of the APRS server:
@@ -134,6 +140,9 @@ MTK895B2D>OGNMTK,qAS,Microtrak:/195300h4849.11N/00216.49E'000/000/A=000472 !W72!
 MTK6FC895>OGNMTK,qAS,Microtrak:/195346h4849.09N/00216.52E'000/000/A=000295 !W18! id076FC895
 
 FLRDDA396>OGAPIK,qAS,APIK:/113700h4520.00N/00510.00E'000/050/A=000472 !W37! id07DDA396 euiecdb86fffe00001b
+
+
+---------------------------------------------------------------------------------------------------------------------------------
 
 and here is what we dump at the receiver just before sending it to the APRS server.
 
