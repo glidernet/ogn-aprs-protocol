@@ -16,3 +16,19 @@ MTK39447C>OGNMTK,qAS,Microtrak:/165936h4909.87N/00218.81E'227/007/A=000209 !W65!
 MTK39447C>OGNMTK,qAS,Microtrak:/165828h4909.96N/00218.92E'194/008/A=000223 !W96! id2339447C rssi-109 snr3 sf9 gw3 abw0108000B36 gps13
 
 MTK39447C>OGNMTK,qAS,Microtrak:/165720h4910.22N/00217.65E'176/082/A=000672 !W89! id2339447C rssi-100 snr14 sf9 gw10 abw0108000B36 gps16
+
+# the following beacons show messages recieved from a tracker during the crossing of the mediterrenean sea between Corsica and mainland France
+# despite high altitude 5900 ft rssi and snr are still good enough to allow packet transmission without loss (gw, ie gw count is still greater than 2)
+# sf (spreading factor ) is lowered to 9 in flight to optimize message frequency (every 20 seconds).
+
+MTK300970>OGNMTK,qAS,Microtrak:/154002h4249.59N/00759.17E'330/151/A=005902 !W34! id23300970 rssi-114 snr0 sf9 gw8 abw0108000B02 gps2
+
+MTK300970>OGNMTK,qAS,Microtrak:/153900h4247.32N/00800.88E'331/150/A=005898 !W83! id23300970 rssi-111 snr1 sf9 gw10 abw0108000B02 gps2
+
+MTK300970>OGNMTK,qAS,Microtrak:/153759h4245.13N/00802.58E'330/151/A=005902 !W80! id23300970 rssi-115 snr-3 sf9 gw7 abw0108000B02 gps2
+
+MTK300970>OGNMTK,qAS,Microtrak:/153658h4242.84N/00804.31E'331/153/A=005898 !W45! id23300970 rssi-109 snr1 sf9 gw10 abw0108000B02 gps2
+
+MTK300970>OGNMTK,qAS,Microtrak:/153556h4240.52N/00806.04E'330/153/A=005898 !W41! id23300970 rssi-110 snr3 sf9 gw4 abw0108000B02 gps2
+
+MTK300970>OGNMTK,qAS,Microtrak:/153454h4238.24N/00807.79E'330/154/A=005898 !W36! id23300970 rssi-110 snr2 sf9 gw5 abw0108000B02 gps2
