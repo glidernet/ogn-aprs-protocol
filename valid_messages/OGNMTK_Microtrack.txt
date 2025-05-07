@@ -1,5 +1,34 @@
+# The following beacons are example for the microtrak APRS format
+#
+# microtrak device can send data in the name of a FLARM device.
+# id field is the same than FLARM one
+# rssi field in dBm is the signal level of the best receiving antenna
+# snr is the signal to noise ratio of this message
+# sf is the spreading factor used for this message since microtrak transmits over LoRaWAN netowrks
+# gw is the number of antenna(s) that have received the message
+# abw is the abbreviated form of the original device eui64
+# gps indicates the horizontal precision of the gps receiver in meters
+#
+MTK39447C>OGNMTK,qAS,Microtrak:/170054h4909.81N/00218.71E'136/000/A=000209 !W15! id2339447C rssi-111 snr-5 sf10 gw1 abw0108000B36 gps16
 
-MTK895B2D>OGNMTK,qAS,Microtrak:/195300h4849.11N/00216.49E'000/000/A=000472 !W72! id07895B2D
-MTK895B2D>OGNMTK,qAS,Microtrak:/195300h4849.11N/00216.49E'000/000/A=000472 !W72! id07895B2D
-MTK6FC895>OGNMTK,qAS,Microtrak:/195346h4849.09N/00216.52E'000/000/A=000295 !W18! id076FC895
+MTK39447C>OGNMTK,qAS,Microtrak:/165936h4909.87N/00218.81E'227/007/A=000209 !W65! id2339447C rssi-108 snr5 sf10 gw3 abw0108000B36 gps10
 
+MTK39447C>OGNMTK,qAS,Microtrak:/165828h4909.96N/00218.92E'194/008/A=000223 !W96! id2339447C rssi-109 snr3 sf9 gw3 abw0108000B36 gps13
+
+MTK39447C>OGNMTK,qAS,Microtrak:/165720h4910.22N/00217.65E'176/082/A=000672 !W89! id2339447C rssi-100 snr14 sf9 gw10 abw0108000B36 gps16
+
+# the following beacons show messages recieved from a tracker during the crossing of the mediterrenean sea between Corsica and mainland France
+# despite high altitude 5900 ft rssi and snr are still good enough to allow packet transmission without loss (gw, ie gw count is still greater than 2)
+# sf (spreading factor ) is lowered to 9 in flight to optimize message frequency (every 20 seconds).
+
+MTK300970>OGNMTK,qAS,Microtrak:/154002h4249.59N/00759.17E'330/151/A=005902 !W34! id23300970 rssi-114 snr0 sf9 gw8 abw0108000B02 gps2
+
+MTK300970>OGNMTK,qAS,Microtrak:/153900h4247.32N/00800.88E'331/150/A=005898 !W83! id23300970 rssi-111 snr1 sf9 gw10 abw0108000B02 gps2
+
+MTK300970>OGNMTK,qAS,Microtrak:/153759h4245.13N/00802.58E'330/151/A=005902 !W80! id23300970 rssi-115 snr-3 sf9 gw7 abw0108000B02 gps2
+
+MTK300970>OGNMTK,qAS,Microtrak:/153658h4242.84N/00804.31E'331/153/A=005898 !W45! id23300970 rssi-109 snr1 sf9 gw10 abw0108000B02 gps2
+
+MTK300970>OGNMTK,qAS,Microtrak:/153556h4240.52N/00806.04E'330/153/A=005898 !W41! id23300970 rssi-110 snr3 sf9 gw4 abw0108000B02 gps2
+
+MTK300970>OGNMTK,qAS,Microtrak:/153454h4238.24N/00807.79E'330/154/A=005898 !W36! id23300970 rssi-110 snr2 sf9 gw5 abw0108000B02 gps2
