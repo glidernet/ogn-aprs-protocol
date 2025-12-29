@@ -71,12 +71,12 @@ Naviter follows OGN’s comment format closely. Comments will be formatted as:
 
 The device identifier is a 40-bit sequence encoded in hexadecimal (MSB first), structured as follows:
 
-- Bit 0: stealth mode
-- Bit 1: do not track mode
-- Bits 2–5: aircraft type
-- Bits 6–11: address type (extended from 2 to 6 bits to avoid provider collisions)
-- Bits 12–15: reserved
-- Bits 16–39: device ID (24-bit, same as in APRS header)
+- Bit 39: stealth mode
+- Bit 38: do not track mode
+- Bits 34-37: aircraft type
+- Bits 28-33: address type (extended from 2 to 6 bits to avoid provider collisions)
+- Bits 24-27: reserved
+- Bits 0-23: device ID (24-bit, same as in APRS header)
 
 **Note:** In OGN-flavoured APRS, the following address types are used:
 - `00`: unknown
