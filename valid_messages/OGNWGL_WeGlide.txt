@@ -1,0 +1,7 @@
+# The following beacons are examples for WeGlide's APRS format.
+# These values are optional and depend on the device capabilities: Heading, speed, GPS accuracy.
+#
+# source: https://github.com/glidernet/ogn-aprs-protocol
+#
+FLRAABBCC>OGNWGL,qAS,WEGLIDE:/205841h5414.07N/00952.59E'000/000/A=001418 !W43! id04AABBCC
+FLR1A2B3C>OGNWGL,qAS,WEGLIDE:/205841h5414.07N/00952.59E'270/035/A=001418 !W43! id041A2B3C gps22x32
