@@ -92,6 +92,7 @@ OGMSHT		for meshtastic devices			https://meshtastic.org/
 OGNDVS		for weather devices like Davis 		https://www.davisinstruments.com/pages/weather-stations https://www.sainlogic.com/
 OGNWMN      	for the Wingman             		https://www.wingmanfly.app/
 OGNVOL      	for the Volandoo             		https://www.volandoo.com/
+OGNWGL      	for the WeGlide             		https://www.weglide.org/
 
 
 ---------------------------------------------------------------------------------------------------------------------------------
