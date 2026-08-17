@@ -43,6 +43,7 @@ OGNVOL      	for the Volandoo             		https://www.volandoo.com/
 OGNWGL      	for the WeGlide             		https://www.weglide.org/
 OGBSTOP         for the BirdStop devices		https://www.birdstop.com/
 OGNPUR      	for the PureTrack             		https://puretrack.io/
+OGPGP       	for the pgpilot app             	https://pgpilot.app
 
 
 ---------------------------------------------------------------------------------------------------------------------------------
