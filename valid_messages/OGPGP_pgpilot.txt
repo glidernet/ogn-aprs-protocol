@@ -1,0 +1,22 @@
+# The following beacons are examples of the pgpilot APRS format
+# https://pgpilot.app - a paragliding flight instrument app
+# source: https://github.com/glidernet/ogn-aprs-protocol
+#
+# Source callsign is PGP + 6 hex. The addresses are app-derived, not
+# registered FLARM devices, so the id field carries address type 3 (OGN).
+# Aircraft type is 7 (paraglider) or 6 (hang glider).
+#
+# The climb field is omitted when we do not know it, rather than sent as
+# +000fpm. Likewise CSE/SPD is dropped when the fix carries no heading.
+# Beacons marked RELAY* are FLARM traffic overheard through one of our
+# pilots' devices and re-sent under the originating aircraft's identity.
+#
+PGP3A2F19>OGPGP,qAS,PGPILOT:/114200h6152.51N/00905.88Eg214/017/A=003871 !W17! id1F3A2F19 +472fpm
+PGP3A2F19>OGPGP,qAS,PGPILOT:/114205h6152.48N/00905.85Eg231/016/A=003911 !W76! id1F3A2F19 +413fpm
+PGP3A2F19>OGPGP,qAS,PGPILOT:/114210h6152.46N/00905.81Eg248/015/A=003947 !W53! id1F3A2F19 +354fpm
+PGP3A2F19>OGPGP,qAS,PGPILOT:/114215h6152.44N/00905.76Eg266/016/A=003970 !W72! id1F3A2F19 +177fpm
+PGP3A2F19>OGPGP,qAS,PGPILOT:/114220h6152.43N/00905.70Eg281/018/A=003980 !W97! id1F3A2F19 -59fpm
+PGP3A2F19>OGPGP,qAS,PGPILOT:/114225h6152.44N/00905.64Eg288/021/A=003963 !W17! id1F3A2F19 -276fpm
+PGP3B0C74>OGPGP,qAS,PGPILOT:/114310h6152.15N/00906.27Eg102/025/A=004600 !W83! id1B3B0C74 -157fpm
+PGP3C51A8>OGPGP,qAS,PGPILOT:/114325h6152.86N/00904.94Eg177/013/A=003264 !W20! id1F3C51A8
+FLRDDA5BA>OGPGP,RELAY*,qAS,PGPILOT:/114340h6151.00N/00907.66E'044/064/A=007021 !W12! id06DDA5BA +610fpm
