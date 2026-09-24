@@ -1,0 +1,31 @@
+# The following beacons are examples for VarioVoice's APRS format, tocall
+# OGNVVO. VarioVoice is an audio only flight instrument for paragliding and
+# hang gliding; positions are sent over the internet from the phone.
+#
+# The ten beacons are one flight in order: two on the ground before the vario
+# has settled, where the climb and the turn rate are omitted rather than sent
+# as zero; one just airborne; three thermalling, including a pair ten seconds
+# apart whose course has reversed and whose position has barely moved; two on
+# glide; one hang glider, which differs only in the aircraft type inside the id
+# field; and one after landing, still transmitting on the heartbeat.
+#
+# Each phone logs in with its own callsign and sends only its own position, so
+# the packets arrive with a qAC construct and the server that accepted them.
+#
+# Signal strength, frequency offset and error count are deliberately absent: a
+# phone on the internet receives nothing, and reporting 0.0dB 0e +0.0kHz would
+# claim a reception that never happened. The climb rate, the turn rate and the
+# GPS accuracy are the opposite case, all three measured.
+#
+# source: https://github.com/glidernet/ogn-aprs-protocol
+#
+VVO1A2B3C>OGNVVO,qAC,GLIDERN1:/124105h4549.67N/00918.36Eg000/000/A=003422 id1F1A2B3C gps9x14
+VVO1A2B3C>OGNVVO,qAC,GLIDERN1:/124150h4549.69N/00918.34Eg225/003/A=003415 id1F1A2B3C gps8x12
+VVO1A2B3C>OGNVVO,qAC,GLIDERN1:/124213h4549.77N/00918.24Eg310/018/A=003471 id1F1A2B3C +177fpm +1.0rot gps6x9
+VVO1A2B3C>OGNVVO,qAC,GLIDERN1:/124232h4549.83N/00918.15Eg025/020/A=003527 id1F1A2B3C +276fpm +5.0rot gps5x8
+VVO1A2B3C>OGNVVO,qAC,GLIDERN1:/124242h4549.84N/00918.17Eg160/019/A=003573 id1F1A2B3C +315fpm +5.0rot gps5x8
+VVO1A2B3C>OGNVVO,qAC,GLIDERN1:/124252h4549.82N/00918.19Eg290/019/A=003615 id1F1A2B3C +217fpm -5.0rot gps5x7
+VVO1A2B3C>OGNVVO,qAC,GLIDERN1:/124334h4550.05N/00917.85Eg305/034/A=003871 id1F1A2B3C -276fpm +0.0rot gps4x6
+VVO1A2B3C>OGNVVO,qAC,GLIDERN1:/124352h4550.23N/00917.59Eg308/036/A=003747 id1F1A2B3C -315fpm +0.0rot gps4x6
+VVO7F04C1>OGNVVO,qAC,GLIDERN1:/124400h4550.28N/00917.46Eg300/045/A=003806 id1B7F04C1 -157fpm +0.0rot gps4x7
+VVO1A2B3C>OGNVVO,qAC,GLIDERN1:/124612h4550.76N/00916.86Eg000/000/A=000922 id1F1A2B3C +000fpm +0.0rot gps6x10

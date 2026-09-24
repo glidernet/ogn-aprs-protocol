@@ -47,6 +47,7 @@ OGNPUR      	for the PureTrack             		https://puretrack.io/
 OGMLAT      	for the cwOGN Multilateration msgs      https://glidernet.org
 OGPGP       	for the pgpilot app             	https://pgpilot.app
 OGNALP      	for the Alpium platform       		https://alpium.io
+OGNVVO      	for the VarioVoice app        		https://variovoice.app/
 
 
 ---------------------------------------------------------------------------------------------------------------------------------
