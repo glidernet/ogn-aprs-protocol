@@ -1,0 +1,23 @@
+# The following beacons are examples for XCSoar's APRS format, tocall OGNXCS,
+# as the XCSoar Cloud server SENDS them to the APRS server: the client-side qOR
+# construct with no callsign after it, which the server rewrites to qAR,XCSOAR
+# on the way out.
+#
+# The first five are a glider with a FLARM address, released from tow and then
+# circling in a thermal, one fix every 10 s. The next two are the same glider
+# on a glide. The last one is a glider whose FLARM transmits its ICAO address.
+#
+# Signal strength, frequency offset, error count and turn rate are
+# deliberately absent: the Cloud receives nothing over the air, and the fix the
+# app sends it does not carry a turn rate.
+#
+# source: https://github.com/glidernet/ogn-aprs-protocol
+#
+FLRDD5A01>OGNXCS,qOR:/123000h4744.29N/01226.10E'060/052/A=003609 !W80! id06DD5A01 +098fpm
+FLRDD5A01>OGNXCS,qOR:/123010h4744.18N/01226.19E'150/048/A=003635 !W39! id06DD5A01 +315fpm
+FLRDD5A01>OGNXCS,qOR:/123020h4744.18N/01226.00E'270/046/A=003688 !W39! id06DD5A01 +413fpm
+FLRDD5A01>OGNXCS,qOR:/123030h4744.30N/01226.11E'030/050/A=003757 !W32! id06DD5A01 +472fpm
+FLRDD5A01>OGNXCS,qOR:/123040h4744.19N/01226.20E'150/047/A=003832 !W09! id06DD5A01 +453fpm
+FLRDD5A01>OGNXCS,qOR:/125512h4756.79N/01236.40E'095/092/A=005643 !W09! id06DD5A01 -256fpm
+FLRDD5A01>OGNXCS,qOR:/125522h4756.76N/01236.79E'095/093/A=005600 !W73! id06DD5A01 -276fpm
+ICA3E5A01>OGNXCS,qOR:/131004h4751.72N/01246.99E'210/085/A=006398 !W73! id053E5A01 -177fpm
