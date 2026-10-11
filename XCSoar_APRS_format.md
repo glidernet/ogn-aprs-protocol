@@ -24,7 +24,8 @@ user XCSOAR pass <passcode> vers XCSoar-Cloud <version>
 The app sends its fixes to the XCSoar Cloud server, not to APRS-IS. The server
 holds one APRS-IS connection and sends on behalf of the pilots, so each packet
 carries the client-side construct `qOR` with no callsign after it. The server
-rewrites it, and consumers see `...,qAR,XCSOAR:`.
+rewrites it to `qAS` followed by the login, and consumers see
+`...,qAS,XCSOAR:`.
 
 The examples in section 5 and in `valid_messages/OGNXCS_XCSoar.txt` are what
 the XCSoar Cloud server SENDS. `aprsmsgs.txt` carries them in the form the
