@@ -1,6 +1,6 @@
 # The following beacons are examples for XCSoar's APRS format, tocall OGNXCS,
 # as the XCSoar Cloud server SENDS them to the APRS server: the client-side qOR
-# construct with no callsign after it, which the server rewrites to qAR,XCSOAR
+# construct with no callsign after it, which the server rewrites to qAS,XCSOAR
 # on the way out.
 #
 # The first five are a glider with a FLARM address, released from tow and then
