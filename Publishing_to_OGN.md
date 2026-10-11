@@ -95,10 +95,10 @@ A normal GPS reports that height in the NMEA GGA sentence. The feeder copies the
 The words after the position are the OGN extra fields. Use the ones the aircraft messages already show, for example in [valid_messages/APRS_aircraft.txt](valid_messages/APRS_aircraft.txt):
 
 * `id` — address, stealth, no-tracking, aircraft type, and address type
-* climb rate, in `fpm` [feet-per-minute] - +1234fpm = 1234 feet/minute climb
-* turn rate, in `rot` [standard-turn 180deg/min = 3deg/sec] - 1.5rot = 4.5deg/sec
-* GPS accuracy, as `gps` with horizontal and vertical [metres] - gps5x7 = 5m horizontal and 7m vertical accuracy
-* standard pressure altitude in feet formated as 'flight level' - FL012.34 = 1234 feet
+* climb rate, in `fpm`
+* turn rate, in `rot`
+* GPS accuracy, as `gps` with horizontal and vertical metres
+* flight level, as `FL`
 * software and hardware versions, as `s` and `h`
 
 A radio reception also carries signal-to-noise in `dB`, corrected bit errors in `e`, frequency offset in `kHz`, and received power in `dBm`. A feeder that did not receive the aircraft by radio leaves those out.
