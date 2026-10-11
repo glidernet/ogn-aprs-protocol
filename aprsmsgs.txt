@@ -42,6 +42,10 @@ and if coming from the Alpium platform (paraglider, then hang glider):
 ALP9E3C1A>OGNALP,qAR,ALPIUM:/101530h4550.36N/00902.04E'090/015/A=003281 !W46! id1F9E3C1A +059fpm
 ALP4B77D0>OGNALP,qAR,ALPIUM:/101612h4552.09N/00905.77E'000/000/A=004120 !W82! id1B4B77D0 -250fpm
 
+and if coming from the XCSoar Cloud (a glider with a FLARM address, then one whose FLARM transmits its ICAO address):
+FLRDD5A01>OGNXCS,qAR,XCSOAR:/123010h4744.18N/01226.19E'150/048/A=003635 !W39! id06DD5A01 +315fpm
+ICA3E5A01>OGNXCS,qAR,XCSOAR:/131004h4751.72N/01246.99E'210/085/A=006398 !W73! id053E5A01 -177fpm
+
 
 and if coming for a weather/met station:
 LECN>OGNDVS,TCPIP*,qAC,GLIDERN1:>164506h 2223:3 2.750s/0ms 23dB/+4kHz 096/3/5kt 58.6F
