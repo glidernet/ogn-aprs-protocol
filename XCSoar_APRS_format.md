@@ -45,6 +45,7 @@ Only the aircraft XCSoar flies in, and only when all of these hold:
 * the FLARM is not set to `PRIV` (stealth) or `NOTRACK`;
 * the OGN device database does not mark the address as not to be tracked or
   not to be identified;
+* the fix has a GPS altitude, and it is not below mean sea level;
 * XCSoar considers the aircraft to be flying.
 
 No traffic received by the phone is relayed: no FLARM, FANET or ADS-B
@@ -69,7 +70,10 @@ targets, only the aircraft XCSoar is in.
   neither is known.
 * **altitude** — GPS altitude above mean sea level in feet, six digits. Not
   the barometric altitude, so that it matches what a FLARM sends through a
-  ground station and the merged track does not jump between the two.
+  ground station and the merged track does not jump between the two. Never
+  negative: a fix below sea level is not sent (section 2), because parsers
+  such as ogn-parser read the altitude as an unsigned number and would drop
+  it together with the course and the speed.
 * **precision** — the third decimal of the latitude and longitude minutes, as
   in OGN-flavoured APRS. The app sends the position in micro degrees.
 * **identifier** — eight hex digits `STttttaa` + address, as in OGN-flavoured
