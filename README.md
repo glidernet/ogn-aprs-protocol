@@ -2,6 +2,8 @@
 
 Format of the OGN APRS messages
 
+Feeders that send positions into OGN follow [Publishing_to_OGN.md](Publishing_to_OGN.md).
+
 Software:
 You have available a very good parser written on python:
 https://github.com/glidernet/python-ogn-client
