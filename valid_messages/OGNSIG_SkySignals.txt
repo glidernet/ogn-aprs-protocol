@@ -1,0 +1,40 @@
+# The following beacons are examples of the SkySignals APRS format
+# https://skysignals.app - an Android app for paragliding and hang gliding pilots,
+# with a SkyCard Radio (FLARM-compatible and FANET radio)
+# source: https://github.com/glidernet/ogn-aprs-protocol
+#
+# These are the sentences the SkySignals backend SENDS over its single APRS-IS
+# connection (path ending in qOR). Clients receive them as ...,qAS,SKYSIG:
+#
+# Source callsign is the aircraft's own radio identity, as an OGN receiver
+# reports it: FLR (FLARM address, address type 2), ICA (ICAO address, type 1)
+# or FNT (FANET, type 2). The own position uses the pilot's SkyCard Radio address.
+#
+# Beacons marked RELAY* are FLARM or FANET traffic received by radio by a
+# pilot's SkyCard Radio and re-sent under the originating aircraft's identity.
+# Nothing is sent for an aircraft OGN already reports from another source.
+#
+# Ground states use the FANET ground-tracking field FNT7x, the \n symbol and
+# aircraft type F, as OGN receivers send them: FNT78 need a ride, FNT79 landed
+# well, FNT7D need medical help, FNT7E distress call.
+#
+# The climb field is omitted when the radio packet carries none. No dB, kHz,
+# rot or gps fields are sent.
+#
+# Own position: paraglider in a thermal, then gliding
+FLRDF2A61>OGNSIG,qOR:/123010h5152.27N/00032.71Wg214/017/A=003871 !W41! id1EDF2A61 +472fpm
+FLRDF2A61>OGNSIG,qOR:/123030h5152.29N/00032.68Wg031/014/A=003958 !W72! id1EDF2A61 +256fpm
+FLRDF2A61>OGNSIG,qOR:/123050h5152.26N/00032.64Wg148/016/A=004012 !W51! id1EDF2A61 +157fpm
+FLRDF2A61>OGNSIG,qOR:/124510h5151.20N/00031.02Wg122/021/A=001214 !W41! id1EDF2A61 -197fpm
+# Own position: landed well, then need a ride
+FLRDF2A61>OGNSIG,qOR:/151502h5150.79N\00030.12Wn !W14! id3EDF2A61 FNT79
+FLRDF2A61>OGNSIG,qOR:/151602h5150.79N\00030.12Wn !W14! id3EDF2A61 FNT78
+# Relayed: glider with a FLARM address
+FLRDE91D3>OGNSIG,RELAY*,qOR:/123012h5153.04N/00033.62W'044/064/A=004921 !W42! id06DE91D3 -157fpm
+FLRDE91D3>OGNSIG,RELAY*,qOR:/123032h5153.28N/00033.11W'052/066/A=004857 !W74! id06DE91D3 -177fpm
+# Relayed: FANET paraglider
+FNT07B21C>OGNSIG,RELAY*,qOR:/123014h5151.44N/00031.87Wg355/015/A=003412 !W36! id1E07B21C +118fpm
+FNT07B21C>OGNSIG,RELAY*,qOR:/123034h5151.51N/00031.89Wg008/013/A=003451 !W71! id1E07B21C +098fpm
+# Relayed: FANET pilot on the ground, distress call
+FNT07C4E9>OGNSIG,RELAY*,qOR:/124402h5149.97N\00029.92Wn !W54! id3E07C4E9 FNT7E
+FNT07C4E9>OGNSIG,RELAY*,qOR:/124502h5149.97N\00029.92Wn !W54! id3E07C4E9 FNT7E
