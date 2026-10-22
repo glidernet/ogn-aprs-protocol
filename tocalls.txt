@@ -49,6 +49,7 @@ OGPGP       	for the pgpilot app             	https://pgpilot.app
 OGNALP      	for the Alpium platform       		https://alpium.io
 OGNVVO      	for the VarioVoice app        		https://variovoice.app/
 OGNXCS      	for the XCSoar Cloud          		https://xcsoar.org/
+OGNSIG      	for the SkySignals app        		https://skysignals.app/
 
 
 ---------------------------------------------------------------------------------------------------------------------------------
