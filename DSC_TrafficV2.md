@@ -1,78 +1,78 @@
-# Drone Sky Check Traffic V2 Remote ID feeder — proposal
+# Drone Sky Check Remote ID feeder
 
-Status: local implementation and parser tests; NOT an allocated protocol or authorization to publish. Proposed TOCALL: `OGNDSC`. APRS login: to be assigned by OGN. Software: `DSC-TrafficV2 0.1`. Password must be issued by OGN; no calculated APRS passcode is substituted. The login appears only on the login line, never in positions sent by this feeder.
+Drone Sky Check (DSC) implements a centralized APRS feeder for Remote ID observations collected by distributed fixed and mobile receivers. The Traffic V2 backend handles receiver provenance, aircraft identity, measurement-time reconstruction, quality metadata and deduplication. One feeder selects accepted observations and maintains the OGN connection. The implementation and parser have been tested locally.
 
-Drone Sky Check is building a distributed Remote ID observation network using fixed and mobile receivers. All observations are processed by a centralized Traffic V2 backend, which handles receiver provenance, aircraft identity, timestamp reconstruction, quality metadata and deduplication. One DSC feeder selects eligible observations for a single persistent APRS connection; individual receivers do not connect to OGN. This document and the coordinated Python parser proposal are submitted for review and discussion before any production activation.
+This proposal follows [Publishing_to_OGN.md](Publishing_to_OGN.md). Proposed TOCALL: `OGNDSC`; software/version: `DSC-TrafficV2 0.1`. The APRS login will be assigned by OGN with its issued password. The feeder name appears on the login line; position paths end at `qOR`.
 
-## Input and identity
+## Aircraft identity
 
-A single central process reads accepted, unexpired Remote ID observations from DSC Traffic V2. It checks `status=accepted`, `code=ACCEPTED`, digest version and SHA-256 of the stored canonical body. Rejected/quarantined observations and other acquisition protocols are excluded. Smartphone receivers and optional USB receivers remain independent of this output protocol. The feeder does not change ingestion, node identities or authentication.
+A persistent assignment registry maps complete, typed Remote ID identities to aircraft addresses. It checks uniqueness of addresses and identity mappings, rejects ambiguous or expired assignments, and supports explicitly associated devices sharing one aircraft address. Basic IDs are not hashed or truncated into 24-bit addresses.
 
-An external reviewed registry maps full typed, namespaced Remote ID claims to a verified address. There is no hash-based 24-bit allocation. ICAO/FLARM need assignment evidence; OGN allocations additionally need a dated DDB check and evidence of checks against ICAO/FLARM ranges. The operator provides these references; this software cannot certify their truth. A row may list explicitly associated device identities for one aircraft. Duplicate addresses across rows, conflicting claims, unknown/session/MAC identifiers, revoked/expired assignments and ambiguous mappings block forwarding. Serial HEX/UTF8/BASE64 representations normalize to bytes with trailing NUL padding removed; no other identity inference is performed.
+Assignments follow the OGN procedure: use an existing ICAO or FLARM assignment where applicable; otherwise use an OGN address after DDB collision checks and exclusion of ICAO/FLARM ranges. Registry entries retain assignment evidence and dated checks. Real allocations remain unavailable until those checks are verifiable. Callsigns `ICAxxxxxx`, `FLRxxxxxx` and `OGNxxxxxx` match address types 1, 2 and 3 in `id`. Receiver identifiers are separate from aircraft addresses.
 
-Source callsign is `ICAxxxxxx`, `FLRxxxxxx` or `OGNxxxxxx`, matching address type 1, 2 or 3 in the `id` field. Receiver node IDs are never aircraft addresses. Publication evidence is required in each registry row. Explicit no-tracking, stealth or publication denial suppress forwarding. Absence of an RID privacy flag is not consent.
+The feeder selects accepted, unexpired Remote ID records, validates their stored canonical digest and requires publication authorization in the registry. Explicit no-tracking, stealth or publication denial suppress forwarding.
 
-## Measurement time and proposed DSC extension
+## Position timestamp
 
-`/HHMMSSh` is the stored observation `time.measuredAt`, truncated to the APRS whole second. It is never replaced by `receivedAt`, server ingress or transmission time, including after buffering/reconnect. The complete original time object, uncertainty if present, raw RID timestamp and server admission remain in the local bounded queue.
+The APRS `/HHMMSSh` field carries the observation's `time.measuredAt`, at whole-second resolution. Traffic V2 reconstructs UTC from the Remote ID temporal component and the receiver's time reference. For RID hour timestamps, the raw value is deciseconds within the UTC hour (0..35999); reconstruction selects the nearest candidate from the previous, current and next hour, including day rollover.
 
-DSC may accept a reconstructed UTC instant. Remote ID location contains deciseconds within an hour (0..35999). AirSense chooses the UTC-hour candidate nearest the receiver reference; Traffic V2 validates reconstruction and admission. The operational profiles use Android GNSS or Android network clock; they are **operational estimates**, with receiverClock UNKNOWN, not certified/synchronized UTC measurements. A 5 s receiver-admission window is not an uncertainty bound. Network time support and availability depend on Android. The feeder copies the accepted instant; it does not repeat or improve this reconstruction.
+For example, synthetic RID value `20960` and receiver reference `2026-10-26T12:34:56.500Z` yield position time `2026-10-26T12:34:56Z`, encoded as `123456h`. The feeder preserves that measurement time through buffering and reconnection. Receive time and server ingestion time remain separate and do not replace it.
 
-For example, the synthetic raw RID value `20960` deciseconds represents 34 minutes 56 seconds within the UTC hour. With receiver reference `2026-10-26T12:34:56.500Z`, nearest-hour reconstruction produces `2026-10-26T12:34:56Z`; APRS carries `123456h`. Candidates in the previous, current and next UTC hour handle hour/day rollover. The raw component does not itself identify a date or prove clock synchronization.
+DSC retains the raw value/unit, reconstruction algorithm and reference time, receiver clock basis, measurement quality and receive time. Current reconstructed profiles use GNSS or network-clock references and are classified as operational estimates (`RECONSTRUCTED_UTC` / `OPERATIONAL_ESTIMATED`). These classifications do not specify numerical accuracy or certify clock synchronization. The timestamp mechanism is unchanged by this feeder; its treatment under OGN's measurement-UTC rule is part of this proposal's review.
 
-The retained DSC fields distinguish `rawTime` (value, encoding and unit), `measurementBasis=RID_HOUR`, `measurementQuality=RECONSTRUCTED_UTC`, `reconstruction` (algorithm, version, referenceBasis, referenceTime), `receiverClock`, `receivedAt`, and server `timeAdmission`. For the example, the GNSS-clock algorithm version is `2-android-gnss-clock` and admission is `OPERATIONAL_ESTIMATED`. Neither that admission nor the APRS token upgrades the estimate to certified UTC. Server `ingestedAt` remains a separate timestamp and is not the position time.
+### Optional provenance extension: dscT
 
-Proposed DSC-only token `dscT<code>` is timestamp provenance, not accuracy:
+We propose the optional, dimensionless `dscT<code>` token to expose a compact part of that provenance:
 
-| Code | Meaning |
-|---|---|
-| O | Original device fix UTC as declared by the source; no new certification claim |
-| G | Reconstructed using Android GNSS clock |
-| N | Reconstructed using Android network clock |
-| R | Other accepted nearest-hour reconstruction; full provenance retained in DSC |
+| Token | Provenance | Python value `dsc_time_source` |
+|---|---|---|
+| `dscTO` | Original device fix UTC as declared by the source | `device_fix` |
+| `dscTG` | Reconstructed using Android GNSS clock | `android_gnss_clock` |
+| `dscTN` | Reconstructed using Android network clock | `android_network_clock` |
+| `dscTR` | Other accepted nearest-hour reconstruction | `other_reconstruction` |
 
-The token is one whitespace-delimited, case-sensitive, dimensionless provenance code: `dscTO`, `dscTG`, `dscTN` or `dscTR`. It carries no numerical accuracy or uncertainty. Exactly one valid token is recognized for `OGNDSC` position messages. Missing, unknown, malformed or multiple `dscT` tokens produce no DSC time fields in the Python parser; the raw comment remains available. Sources with other TOCALLs keep their existing behavior. The parser values are respectively `device_fix`, `android_gnss_clock`, `android_network_clock`, and `other_reconstruction`; `dsc_time_reconstructed` is false only for O.
+The token is case-sensitive and whitespace-delimited. The companion parser recognizes exactly one valid token on an `OGNDSC` position message and sets `dsc_time_reconstructed` to false for O, true otherwise. Missing, unknown, malformed or multiple tokens leave those optional fields absent; ordinary position parsing and other feeders remain unchanged. The raw comment is retained.
 
-Reconstructed output is disabled until OGN explicitly accepts the model. `python-ogn-client` exposes `dsc_time_source` and `dsc_time_reconstructed`, retaining the raw comment. No GPS accuracy or uncertainty is manufactured. This is an explicit deviation/question relative to the exact-UTC wording in Publishing_to_OGN; local acceptance does not resolve that policy question.
+`dscT` conveys provenance, not accuracy, and is not a prerequisite for the integration. The local candidate includes it for review; its adoption is independent of the underlying timestamp reconstruction and standard APRS position fields.
 
-## Position and optional fields
+## Position, altitude and motion
 
-Latitude/longitude use WGS84 uncompressed coordinates and `!Wxx!` for the third decimal minute. Rounding carries into degrees. UAV uses symbol `/'`, aircraft type D. Known non-aircraft are suppressed; unknown flight state is marked ground support (symbol `/z`, type E), not silently called airborne.
+Latitude/longitude use WGS84 uncompressed coordinates and `!Wxx!` for the third decimal minute. UAVs use symbol `/'` and aircraft type D. Known non-aircraft are excluded; uncertain flight state uses ground support symbol `/z` and type E, as described in Publishing_to_OGN.
 
-Course comes from ground track, never magnetic heading; north is 360. Speed is converted from m/s to knots. Both are omitted if either is unavailable. `A=` contains feet above GEOID only, rounded to the nearest foot. An explicitly derived GEOID value requires geoid-model and derivation metadata. WGS84 ellipsoid height, pressure altitude, AGL and takeoff-relative height are never relabelled as MSL. The current candidate does not ship a geoid grid or invent a separation. Negative/out-of-field-range altitude is omitted, never clamped to zero. Missing altitude requires explicit configuration and OGN confirmation; otherwise the observation is withheld.
+`A=` is height above the geoid in feet, rounded to the nearest foot. An explicit GEOID measurement is converted from metres to feet. A derived GEOID measurement is accepted with its geoid-model and derivation metadata. Ellipsoidal height would require a known geoid separation; the feeder does not perform that conversion without an adequate model, nor reinterpret AGL or barometric altitude as geoid height.
 
-Geometric vertical speed may be converted to fpm. No turn-rate, FL, RSSI/SNR, error rate, GPS accuracy, hardware or software extra fields are invented. Acquisition quality is preserved in DSC; additional wire fields require a coordinated proposal if OGN needs them.
+Without representable GEOID altitude, the current operational default withholds the position. We propose omission of `A=` as the alternative missing-value policy for maintainer review; the candidate supports this explicitly configured mode. Negative/out-of-field-range values are treated as unavailable, not clamped.
 
-## Examples — OFFLINE fixtures, not address allocations
+Course is ground track (north 360), speed is knots converted from m/s; both are omitted if either is unavailable. Geometric climb rate is converted to fpm when present. Other OGN extras are left absent when their underlying measurement is unavailable.
 
-The address ABC123 and name DSCDEMO below are documentation fixtures ONLY. They have not been checked or allocated and must not be used on either OGN network. The sample altitude is an explicitly supplied GEOID fixture, not a conversion of an AirSense ellipsoid measurement.
+## Synthetic examples
 
-**Feeder sends to server** (path ends at qOR):
+These are offline documentation fixtures, not live captures. Address `ABC123`, name `DSCDEMO` and coordinates are synthetic and unallocated; do not transmit these examples. The altitude fixture explicitly supplies a GEOID value.
+
+**Feeder sends** (no login after qOR):
 
 ```text
 OGNABC123>OGNDSC,qOR:/123456h4530.00N/00915.00E'360/021/A=000394 !W00! id37ABC123 +197fpm dscTG
 ```
 
-**Client receives after server rewriting**, illustrated; not captured from a live OGN server:
+**Client receives**, illustrating the server's path rewrite:
 
 ```text
 OGNABC123>OGNDSC,qAR,DSCDEMO:/123456h4530.00N/00915.00E'360/021/A=000394 !W00! id37ABC123 +197fpm dscTG
 OGNABC123>OGNDSC,qAS,DSCDEMO:/123456h4530.00N/00915.00E'360/021/A=000394 !W00! id37ABC123 +197fpm dscTG
 ```
 
-## Transport and limits
+## Transport and rate limiting
 
-One process owns one persistent connection and a locked SQLite state file. Host `aprs.glidernet.org`; TEST 15580, PRODUCTION 14580. Both configurations start disabled. Production additionally requires explicit enablement and recorded OGN validation. Test also requires verified access, OGN-issued credential and TOCALL approval. Synthetic/replayed input is excluded from production; CLI file preview cannot be combined with network mode. Queue state is bound to its configuration and cannot be reused across environments.
+One central worker owns a persistent connection and locked durable queue. It sends at most one position per aircraft every 20 seconds airborne or 60 seconds on the ground/unknown, with deduplication across receivers and restarts. The latest pending position replaces older ones for the same assigned address. Queue freshness is 120 seconds; capacity is bounded. An ambiguous socket write is not replayed, avoiding duplicate transmission at the possible cost of one fix.
 
-Maximum one position per aircraft per 20 s airborne, 60 s on ground or unknown. No accelerated trajectory exception is implemented. The rate interval survives restart; latest pending fix replaces older fixes for the same allocated address across receivers. Old/equal measurement times are dropped; pending queue is bounded to 1000 aircraft, history to 10000 addresses, freshness 120 s, future tolerance 2 s. Capacity exhaustion stops accepting new entries rather than silently evicting safety history.
+Keepalive is `# DSC-TrafficV2 0.1` every 600 seconds. Reconnection resolves `aprs.glidernet.org` again, with exponential backoff capped at 60 seconds. The connection checks login replies and detects EOF/idle loss. TEST uses 15580; Production uses 14580 with separate configuration/state. No live OGN test or APRS access is claimed here. Network output is currently disabled; TEST operation precedes OGN validation and any Production activation.
 
-A `# DSC-TrafficV2 0.1` comment is sent every 600 s while connected. Every reconnect calls hostname resolution again; backoff doubles to 60 s. The connection consumes server replies, detects EOF and requires verified login. A 900 s receive-idle limit recovers blackholed connections. A fix is durably reserved before socket write. Ambiguous writes are dropped rather than replayed: this favors no duplicate transmission and may lose a fix. TCP write success is **not** an OGN acceptance receipt. The next fresh fix can be sent after the normal rate interval.
+## Review points
 
-## Requested maintainer decisions
+- Confirm the registry-based assignment procedure for Remote ID aircraft, including multi-device associations.
+- Review the documented UTC reconstruction and retained measurement-time provenance.
+- Review `OGNDSC` and the optional `dscT` extension.
+- Choose the missing-GEOID-altitude policy: withhold, or omit `A=`.
 
-1. Authoritative allocation procedure/ranges and DDB validation for Remote ID aircraft claims, including multiple devices on one aircraft.
-2. Acceptance or exclusion of reconstructed UTC, the `dscT` token, and publication without GEOID altitude when unavailable.
-3. Assignment of TOCALL/login and issue of password/access for TEST.
-4. Whether additional RID/quality fields are required; no receiver or aircraft personal identifiers beyond the assigned address are proposed here.
-
-After agreement: controlled TEST operation for several days, observed server/client sentences, then OGN review and separate production approval. This document and parser changes do not themselves authorize network publication.
+The coordinated parser proposal is [python-ogn-client PR #152](https://github.com/glidernet/python-ogn-client/pull/152). After review and OGN-issued access, the next step is the documented multi-day TEST validation before Production.
