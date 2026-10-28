@@ -50,8 +50,7 @@ OGNALP      	for the Alpium platform       		https://alpium.io
 OGNVVO      	for the VarioVoice app        		https://variovoice.app/
 OGNXCS      	for the XCSoar Cloud          		https://xcsoar.org/
 OGNSIG      	for the SkySignals app        		https://skysignals.app/
+OGNDSC          Drone Sky Check Traffic V2 Remote ID (proposed)    DSC_TrafficV2.md
 
 
 ---------------------------------------------------------------------------------------------------------------------------------
-
-

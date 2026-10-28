@@ -132,3 +132,9 @@ thus note that the server replaces "O" with "A"
 ==============================================================================================
 On the valid_messages directory you can find axamples for all the currently supported devices.
 ==============================================================================================
+
+DSC proposal: synthetic CLIENT-RECEIVED examples, not captured traffic.
+ABC123 and DSCDEMO are unallocated fixtures; do not transmit them.
+See DSC_TrafficV2.md for feeder-sent qOR examples and pending OGN decisions.
+OGNABC123>OGNDSC,qAR,DSCDEMO:/123456h4530.00N/00915.00E'360/021/A=000394 !W00! id37ABC123 +197fpm dscTG
+OGNABC123>OGNDSC,qAS,DSCDEMO:/123456h4530.00N/00915.00E'360/021/A=000394 !W00! id37ABC123 +197fpm dscTG
