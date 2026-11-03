@@ -1,0 +1,29 @@
+# The following beacons are examples of the Uphere APRS format, tocall OGNUPH.
+# Uphere (https://uphere.app) is a web app for VFR pilots in Hungary, running
+# on a tablet in the aircraft; the Uphere server forwards the tablet's own GNSS
+# fixes over one APRS-IS connection.
+# source: https://github.com/glidernet/ogn-aprs-protocol
+#
+# These are the sentences the Uphere server SENDS (path ending in qOR).
+# Clients receive them as ...,qAS,UPHERE:
+#
+# Callsign UPH + the OGN address the tablet drew (address type 3), or ICA + the
+# aircraft's ICAO address when the pilot entered it (address type 1). The
+# detail byte carries the aircraft type from the app's profile: id23 is a
+# powered aircraft with an OGN address, id05 a glider with an ICAO address.
+#
+# The six beacons: a powered aircraft near Budaörs in level flight, the same
+# aircraft 20 s later, then 6 s after that because its track changed by more
+# than 30 degrees; a glider with an ICAO address; the powered aircraft after
+# landing on the one-a-minute ground rate, where the turn rate is omitted; and
+# the glider on the ground with no vertical accuracy, where gps is omitted too.
+#
+# Signal strength, frequency offset and error count are absent: nothing was
+# received by radio. Climb, turn rate and GNSS accuracy are measured.
+#
+UPH3C9F2A>OGNUPH,qOR:/104212h4727.33N/01854.17E'198/097/A=002493 !W64! id233C9F2A -064fpm +0.3rot gps4x7
+UPH3C9F2A>OGNUPH,qOR:/104232h4726.82N/01853.93E'198/097/A=002471 !W38! id233C9F2A -064fpm +0.0rot gps4x7
+UPH3C9F2A>OGNUPH,qOR:/104238h4726.67N/01853.82E'240/092/A=002480 !W60! id233C9F2A +120fpm +2.0rot gps5x8
+ICA4703C1>OGNUPH,qOR:/104240h4731.10N/01848.55Eg305/058/A=003215 !W27! id054703C1 +236fpm +4.0rot gps5x9
+UPH3C9F2A>OGNUPH,qOR:/112001h4726.96N/01854.21E'000/000/A=000495 !W12! id233C9F2A +000fpm gps3x5
+ICA4703C1>OGNUPH,qOR:/113105h4731.24N/01848.60Eg000/000/A=000611 !W90! id054703C1 +000fpm
