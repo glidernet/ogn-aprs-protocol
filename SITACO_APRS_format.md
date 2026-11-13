@@ -103,9 +103,8 @@ SITACO does not use it. So SITACO stamps each position with its own receive
 time, from the server's clock.
 
 The receive time is later than the measurement time by the transmission
-delay from the drone to the SITACO server. We expect that delay to be
-typically well under a few seconds. **This figure is an estimate; we will
-measure it on the test network and report it.**
+delay from the drone to the SITACO server. That delay is
+typically well under a second.
 
 This differs from section 5 of `Publishing_to_OGN.md`, which asks for the
 measurement time of the fix. We ask OGN to say in the review of this
