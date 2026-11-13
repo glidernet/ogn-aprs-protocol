@@ -51,6 +51,7 @@ OGNVVO      	for the VarioVoice app        		https://variovoice.app/
 OGNXCS      	for the XCSoar Cloud          		https://xcsoar.org/
 OGNSIG      	for the SkySignals app        		https://skysignals.app/
 OGNUPH      	for the Uphere app            		https://uphere.app/
+OGNSIT      	for the SITACO drone platform 		https://sitaco.de/
 OGNDSC          Drone Sky Check Traffic V2 Remote ID (proposed)    DSC_TrafficV2.md
 
 
