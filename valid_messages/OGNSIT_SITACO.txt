@@ -1,0 +1,23 @@
+# The following beacons are examples of the SITACO APRS format, tocall OGNSIT.
+# SITACO is a drone operations platform. Its server forwards the positions of
+# DJI drones, received over the DJI Cloud API, over one APRS-IS connection per
+# SITACO deployment.
+# source: https://github.com/glidernet/ogn-aprs-protocol (SITACO_APRS_format.md)
+#
+# These are the sentences the SITACO server SENDS (path ending in qOR).
+# Clients receive them as ...,qAR,<login>: or ...,qAS,<login>:
+#
+# Callsign SIT + the drone's OGN address (B00000-BFFFFF, address type 3).
+# id37: aircraft type D (UAV), address type 3 (OGN), stealth and no-track 0.
+# The course slot is the drone's nose heading, not its direction of travel.
+# The time is when the SITACO server received the position from the drone,
+# not the drone's own measurement time.
+#
+# Addresses and positions are invented. The four beacons: a drone in cruise;
+# the same drone hovering with its nose to the north; a second drone
+# descending, nose to the south-west; that drone's last position, at landing.
+#
+SITB4E21C>OGNSIT,qOR:/104212h4842.74N/00918.94E'072/024/A=001354 !W16! id37B4E21C +039fpm
+SITB4E21C>OGNSIT,qOR:/104452h4843.13N/00919.76E'360/000/A=001470 !W45! id37B4E21C +000fpm
+SITB71A05>OGNSIT,qOR:/110540h4841.43N/00916.21E'215/003/A=001284 !W10! id37B71A05 -492fpm
+SITB71A05>OGNSIT,qOR:/110720h4841.40N/00916.19E'215/000/A=001276 !W06! id37B71A05 +000fpm
